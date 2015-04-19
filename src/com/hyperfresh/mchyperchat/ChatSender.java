@@ -1,6 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
-public abstract class ChatMessager
+public abstract class ChatSender
 {
     public abstract String getName();
 }

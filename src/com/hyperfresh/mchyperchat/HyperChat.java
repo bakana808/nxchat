@@ -24,7 +24,7 @@ public class HyperChat
 	{
 		for(Map.Entry<String, ChatField> e: ChatFieldList.getInstance().entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getValue());
+			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getValue(null));
 		}
 
 		return str;

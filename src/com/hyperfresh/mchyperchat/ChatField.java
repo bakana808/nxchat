@@ -27,5 +27,5 @@ public abstract class ChatField
      * @param args optional arguments
      * @return the current value
      */
-    public abstract String getValue(ChatMessager sender, String... args);
+    public abstract String getValue(ChatSender sender, String... args);
 }
