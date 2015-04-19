@@ -1,6 +1,7 @@
 mc-HyperChat
-or nxChat 2.0 if you were there for that
 ======
+or nxChat 2.0 if you were there for that
+---
 
 mc-HyperChat is a chat plugin for Minecraft leaded by Octopod.
 
@@ -16,13 +17,13 @@ One way to do this is by creating .json files in the "fields" folder.
 For example, fields/color.json contains:
 ```json
 [
-	//...
-	//a field that will replace ${c} with "\u00A7c" in a chat theme
+	# ...
+	# a field that will replace ${c} with "\u00A7c" in a chat theme
 	{
-		keys: ["c", "red"] 	//the keys to define this field under
-		value: "\u00A7c" 	//the value of the field
+		"keys": ["c", "red"] 	//the keys to define this field under
+		"value": "\u00A7c" 	//the value of the field
 	}
-	//...
+	# ...
 ]
 ```
 
@@ -51,7 +52,7 @@ They are also defined in a .json file located in the "themes" folder.
 For example, themes/classic.json contains:
 ```json
 {
-	name: "classic",
+	"name": "classic",
 	"player-body": "<${name}> ${message}"
 }
 ```
