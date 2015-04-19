@@ -1,55 +1,87 @@
-mc-HyperChat
-======
-or nxChat 2.0 if you were there for that
+# HyperChat (the alpha)
+###### or nxChat 2.0 for the insiders
 ---
 
-mc-HyperChat is a chat plugin for Minecraft leaded by Octopod.
+HyperChat is a chat plugin for Minecraft.
+*Everything is still work-in-progress and could be changed.*
 
-Chat Fields
+
+Fields
 ------
-Fields are variables that you can define in your chat themes for user convenience.
+Fields are variables that are used to include information inside your theme.
+Fields are used in a theme by typing `${<id>}`, where `<id>` is the field key. 
+This will be replaced with the field's value in-game.
 
-In a chat theme, including `${<id>}`, where <id> is the field key will replace it with the value it is registered under.
+Creating Fields
+------
+HyperChat includes its own pre-defined fields and allows you to define your own.
+All user-defined fields are contained in the `fields` folder.
 
-mc-HyperChat includes its own fields and allows you to define your own.
-One way to do this is by creating .json files in the "fields" folder.
+There are two ways to create fields.
 
-For example, fields/color.json contains:
+1) **create a JSON file in the `fields` folder.**
+
+This JSON file is an array of "field arrays", which contain the following keys:
+ - `keys` - an array of strings to use as the field keys
+ - `value` - the value of the field.
+
+For example, part of `fields/color.json` contains:
 ```json
 [
-	# ...
-	# a field that will replace ${c} with "\u00A7c" in a chat theme
 	{
-		"keys": ["c", "red"] 	//the keys to define this field under
-		"value": "\u00A7c" 	//the value of the field
+		"keys": ["c", "red"],
+		"value": "\u00A7c"
+	},
+	{
+		"keys": ["d", "pink"],
+		"value": "\u00A7d"
 	}
-	# ...
 ]
 ```
 
-Another way is to do it externally:
-```java
-ChatFieldList.addField("c", "\u00A7c");
+2) **define fields using the API**
 
-ChatFieldList.addField("name", new ChatField()
+In this case, there can define two types of fields: dynamic and static.
+For optimization purposes, if a field is "static", then field keys in themes will be replaced once when it is loaded. If it's "dynamic", then it will be replaced when any message using the theme is printed.
+
+```java
+ChatFieldList fieldList = ChatFieldList.getInstance();
+
+//static field
+fieldList.addField("c", "\u00A7c");
+
+//dynamic field
+fieldList.addField("name", new ChatField()
 {
 	public boolean isDynamic() { return true; }
 
-	public String getValue(ChatMessager sender, String... args)
+	public String getValue(ChatSender sender, String... args)
 	{
 		return sender.getName();
 	}
 }
 ```
 
-Chat Themes
+Themes
 ------
-Chat Themes change how your messages look.
-Other than simply changing the player message format, you can also define a header and footer, allowing for different chat formats.
+Themes change how player and (supported) system messages look.
+Other than simply changing the player message format, you can also define other elements, such as a header and footer, allowing for different chat formats.
 
-They are also defined in a .json file located in the "themes" folder.
+Creating Themes
+------
+All user-defined themes are located in the `themes` folder.
 
-For example, themes/classic.json contains:
+There are two ways to create themes.
+
+1) **create a JSON file in the `themes` folder.**
+
+This JSON file is a "theme array", which contains the following keys:
+ - `name` - The name of the theme
+ - `player-header` - (optional) This will be printed before a player's first chat message in a chain of chat messages.
+ - `player-body` - This will be printed every time a player chats.
+ - `player-footer` - (optional) This will be printed first if the next chat message is from a different player.
+
+For example, this is an included theme, `themes/classic.json`
 ```json
 {
 	"name": "classic",
@@ -57,13 +89,6 @@ For example, themes/classic.json contains:
 }
 ```
 
-themes/classic-twoline.json:
-```json
-{
-	"name": "classic-twoline",
-	"player-header": "<${name}>",
-	"player-body": "    ${message}"
-}
-```
+2) **define themes using the API**
 
 Further documentation will be made later.
