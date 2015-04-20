@@ -1,10 +1,11 @@
 # HyperChat (the alpha)
 ###### or nxChat 2.0 for the insiders
----
 
 HyperChat is a chat plugin for Minecraft.
 *Everything is still work-in-progress and could be changed.*
 
+If you want to contribute to this project, feel free to fork and create pull requests.
+Contact us in IRC by joining the `#hyperfresh` channel in `irc.esper.net`.
 
 Fields
 ------
