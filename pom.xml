@@ -15,14 +15,16 @@
 	</organization>
 
 	<developers>
-		<id>octopod</id>
-		<name>octopod</name>
-		<email>gmail: octopodsquad</email>
-		<roles>
-			<role>project lead</role>
-			<role>developer</role>
-		</roles>
-		<timezone>-10</timezone>
+		<developer>
+			<id>octopod</id>
+			<name>octopod</name>
+			<email>gmail: octopodsquad</email>
+			<roles>
+				<role>project lead</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-10</timezone>
+		</developer>
 	</developers>
 
 	<contributors></contributors>
