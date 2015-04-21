@@ -5,16 +5,23 @@ package com.hyperfresh.mchyperchat;
  */
 public abstract class ChatField
 {
+    // an empty integer array
+    private static int[] EMPTY = new int[0];
+
+    /**
+     * Returns a list of names of this field.
+     * @return an array of strings
+     */
+    public abstract String[] getFieldNames();
+
     /**
      * Returns true if this field is "dynamic."
      * Static fields will be processed into messages once when it is registered.
      * Dynamic fields will be processed into messages every time a player chats.
      * Keep fields static if the values are constant (never changes).
-     * @return
+     * @return true if this field is dynamic
      */
     public boolean isDynamic() { return true; }
-
-    private static int[] EMPTY = new int[0];
 
     /**
      * Returns an array of expected argument sizes. Defaults to 0.
@@ -27,5 +34,5 @@ public abstract class ChatField
      * @param args optional arguments
      * @return the current value
      */
-    public abstract String getValue(ChatSender sender, String... args);
+    public abstract String getFieldValue(ChatSender sender, String... args);
 }
