@@ -7,22 +7,9 @@ import java.util.Set;
 public class ChatFieldList
 {
     /**
-     * The current instance of ChatFieldList.
-     */
-    private static ChatFieldList INSTANCE = new ChatFieldList();
-
-    private ChatFieldList() { }
-
-    /**
      * The map where all the key-field pairs are stored.
      */
     private HashMap<String, ChatField> map = new HashMap<>();
-
-    /**
-     * Gets the current instance of ChatFieldList.
-     * @return the current instance of ChatFieldList
-     */
-    public static ChatFieldList getInstance() { return INSTANCE; }
 
     /**
      * Adds a static key-value field to this list.
@@ -32,12 +19,12 @@ public class ChatFieldList
      */
     public void addField(String[] keys, String value)
     {
-        addField(keys, new StaticChatField(value));
+        addField(keys, new StaticChatField(value, keys));
     }
 
     public void addField(String key, String value)
     {
-        addField(key, new StaticChatField(value));
+        addField(key, new StaticChatField(value, key));
     }
 
     /**
@@ -103,14 +90,22 @@ public class ChatFieldList
     private static class StaticChatField extends ChatField
     {
         private String value;
+        private String[] names;
 
-        public StaticChatField(String value)
+        public StaticChatField(String value, String... names)
         {
             this.value = value;
+            this.names = names;
         }
 
         @Override
-        public String getValue(ChatSender sender, String... args)
+        public String[] getFieldNames()
+        {
+            return names;
+        }
+
+        @Override
+        public String getFieldValue(ChatSender sender, String... args)
         {
             return value;
         }

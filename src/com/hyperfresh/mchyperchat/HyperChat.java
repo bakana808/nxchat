@@ -6,25 +6,24 @@ public class HyperChat
 {
 	private HyperChat() { }
 
-	public static HyperChat INSTANCE = new HyperChat();
+	private final static ChatFieldList FIELD_LIST = new ChatFieldList();
 
-	public void onEnable()
+	public static void onEnable()
 	{
-		ChatFieldList fieldList = ChatFieldList.getInstance();
 		//READ "fields" FOLDER HERE
 	}
 
-	public void onDisable()
+	public static void onDisable()
 	{
-		ChatFieldList.getInstance().clear();
+		FIELD_LIST.clear();
 	}
 
-	public String processString(String str) { return processString(str, false); }
-	public String processString(String str, boolean staticOnly)
+	public static String processString(String str) { return processString(str, false); }
+	public static String processString(String str, boolean staticOnly)
 	{
-		for(Map.Entry<String, ChatField> e: ChatFieldList.getInstance().entrySet())
+		for(Map.Entry<String, ChatField> e: FIELD_LIST.entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getValue(null));
+			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 		}
 
 		return str;
