@@ -6,7 +6,8 @@
 	<artifactId>mc-hyperchat</artifactId>
 	<version>0.1</version>
 
-	<inceptionYear>2015<inceptionYear>
+	<name>HyperChat</name>
+	<inceptionYear>2015</inceptionYear>
 
 	<organization>
 		<name>HyperFresh</name>
