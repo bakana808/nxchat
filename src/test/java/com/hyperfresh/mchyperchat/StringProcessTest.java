@@ -5,17 +5,17 @@ import org.junit.Test;
 
 public class StringProcessTest
 {
-    ChatFieldList fieldList = ChatFieldList.getInstance();
+    ChatFieldList fields = HyperChat.getFields();
 
     @Test
     public void FieldProcessTest()
     {
-        fieldList.clear();
-        fieldList.addField(new String[]{"c"}, "RED");
+        fields.clear();
+        fields.addField(new String[]{"c"}, "RED");
 
         String str;
 
-        str = HyperChat.INSTANCE.processString("${c}${C}");
+        str = HyperChat.processString("${c}${C}");
         Assert.assertEquals("REDRED", str);
     }
 }

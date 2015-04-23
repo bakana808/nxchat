@@ -46,13 +46,13 @@ In this case, there can define two types of fields: dynamic and static.
 For optimization purposes, if a field is "static", then field keys in themes will be replaced once when it is loaded. If it's "dynamic", then it will be replaced when any message using the theme is printed.
 
 ```java
-ChatFieldList fieldList = ChatFieldList.getInstance();
+ChatFieldList fields = HyperChat.getFields();
 
 //static field
-fieldList.addField("c", "\u00A7c");
+fields.addField("c", "\u00A7c");
 
 //dynamic field
-fieldList.addField("name", new ChatField()
+fields.addField("name", new ChatField()
 {
 	public boolean isDynamic() { return true; }
 

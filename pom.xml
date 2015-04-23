@@ -30,9 +30,7 @@
 	<contributors></contributors>
 
 	<build>
-
 		<finalName>${project.name}-${project.version}</finalName>
-		<sourceDirectory>src</sourceDirectory>
 
 		<!-- Compiler Plugin -->
 		<plugins>

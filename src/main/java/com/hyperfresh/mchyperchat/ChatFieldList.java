@@ -105,7 +105,7 @@ public class ChatFieldList
         }
 
         @Override
-        public String getFieldValue(ChatSender sender, String... args)
+        public String getFieldValue(ChatUser sender, String... args)
         {
             return value;
         }
