@@ -1,0 +1,5 @@
+{
+	"name":  "classic-twoline",
+	"player-header": "<${NAME}>",
+	"player-body": "    ${MESSAGE}"
+}
