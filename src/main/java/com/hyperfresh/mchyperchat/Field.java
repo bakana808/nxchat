@@ -3,7 +3,7 @@ package com.hyperfresh.mchyperchat;
 /**
  * Created by Octopod on 4/16/2015.
  */
-public abstract class ChatField
+public abstract class Field
 {
     // an empty integer array
     private static int[] EMPTY = new int[0];
@@ -34,5 +34,5 @@ public abstract class ChatField
      * @param args optional arguments
      * @return the current value
      */
-    public abstract String getFieldValue(ChatUser sender, String... args);
+    public abstract String getFieldValue(User sender, String... args);
 }

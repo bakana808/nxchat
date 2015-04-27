@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class ChatFieldList
+public class FieldList
 {
     /**
      * The map where all the key-field pairs are stored.
      */
-    private HashMap<String, ChatField> map = new HashMap<>();
+    private HashMap<String, Field> map = new HashMap<>();
 
     /**
      * Adds a static key-value field to this list.
@@ -19,12 +19,12 @@ public class ChatFieldList
      */
     public void addField(String[] keys, String value)
     {
-        addField(keys, new StaticChatField(value, keys));
+        addField(keys, new StaticField(value, keys));
     }
 
     public void addField(String key, String value)
     {
-        addField(key, new StaticChatField(value, key));
+        addField(key, new StaticField(value, key));
     }
 
     /**
@@ -33,7 +33,7 @@ public class ChatFieldList
      * @param keys an array of keys to use for this field
      * @param field the field
      */
-    public void addField(String[] keys, ChatField field)
+    public void addField(String[] keys, Field field)
     {
         for(String key: keys)
         {
@@ -41,7 +41,7 @@ public class ChatFieldList
         }
     }
 
-    public void addField(String key, ChatField field)
+    public void addField(String key, Field field)
     {
         map.put(key, field);
     }
@@ -52,7 +52,7 @@ public class ChatFieldList
      * @param key the key of the field
      * @return the field, or null
      */
-    public ChatField getField(String key)
+    public Field getField(String key)
     {
         return map.get(key);
     }
@@ -71,7 +71,7 @@ public class ChatFieldList
      * Gets an <code>EntrySet</code> where each entry is a string key and a field value.
      * @return the entrySet of this list.
      */
-    public Set<Map.Entry<String, ChatField>> entrySet()
+    public Set<Map.Entry<String, Field>> entrySet()
     {
         return map.entrySet();
     }
@@ -87,12 +87,12 @@ public class ChatFieldList
     /**
      * Represents a static key-value field.
      */
-    private static class StaticChatField extends ChatField
+    private static class StaticField extends Field
     {
         private String value;
         private String[] names;
 
-        public StaticChatField(String value, String... names)
+        public StaticField(String value, String... names)
         {
             this.value = value;
             this.names = names;
@@ -105,7 +105,7 @@ public class ChatFieldList
         }
 
         @Override
-        public String getFieldValue(ChatUser sender, String... args)
+        public String getFieldValue(User sender, String... args)
         {
             return value;
         }

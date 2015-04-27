@@ -1,16 +1,16 @@
 package com.hyperfresh.mchyperchat;
 
-public abstract class ChatUser
+public interface User
 {
     /**
      * Gets the name of this user.
      * @return the name of the user.
      */
-    public abstract String getName();
+    public String getName();
 
     /**
      * Gets the last message that this user has sent.
      * @return the last message this user has sent
      */
-    public abstract String getLastMessage();
+    public String getLastMessage();
 }

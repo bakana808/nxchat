@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class StringProcessTest
 {
-    ChatFieldList fields = HyperChat.getFields();
+    FieldList fields = HyperChat.getFields();
 
     @Test
     public void FieldProcessTest()

@@ -7,9 +7,9 @@ public class HyperChat
 	private HyperChat() { }
 
 	/**
-	 * The current instance of ChatFieldList.
+	 * The current instance of FieldList.
 	 */
-	private static ChatFieldList FIELD_LIST = new ChatFieldList();
+	private static FieldList FIELD_LIST = new FieldList();
 
 	/**
 	 * This will run when this plugin is enabled.
@@ -31,13 +31,13 @@ public class HyperChat
 	 * Get the main list of fields.
 	 * @return the main list of fields
 	 */
-	public static ChatFieldList getFields() { return FIELD_LIST; }
+	public static FieldList getFields() { return FIELD_LIST; }
 
 	/**
-	 * Replaces the existing ChatFieldList with a new one,
+	 * Replaces the existing FieldList with a new one,
 	 * effectively deleting all existing fields.
 	 */
-	public static void resetFields() { FIELD_LIST = new ChatFieldList(); }
+	public static void resetFields() { FIELD_LIST = new FieldList(); }
 
 	/**
 	 * Replaces all fields in a string with their values.
@@ -48,7 +48,7 @@ public class HyperChat
 	public static String processString(String str) { return processString(str, false); }
 	public static String processString(String str, boolean staticOnly)
 	{
-		for(Map.Entry<String, ChatField> e: FIELD_LIST.entrySet())
+		for(Map.Entry<String, Field> e: FIELD_LIST.entrySet())
 		{
 			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 		}

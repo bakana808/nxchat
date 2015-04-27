@@ -1,6 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
-public class ChatTheme
+public class Theme
 {
     private String name;
 
