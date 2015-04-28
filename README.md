@@ -1,4 +1,5 @@
-# HyperChat (the alpha)
+HyperChat [![Build Status](https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square)](https://travis-ci.org/hyperfresh/mc-hyperchat) [![Downloads](https://img.shields.io/github/downloads/atom/atom/latest/total.svg?style=flat-square)](https://github.com/hyperfresh/mc-hyperchat/releases/latest)
+===
 ###### or nxChat 2.0 for the insiders
 
 HyperChat is a chat plugin for Minecraft.
@@ -10,7 +11,7 @@ Contact us in IRC by joining the `#hyperfresh` channel in `irc.esper.net`.
 Fields
 ------
 Fields are variables that are used to include information inside your theme.
-Fields are used in a theme by typing `${<id>}`, where `<id>` is the field key. 
+Fields are used in a theme by typing `${<id>}`, where `<id>` is the field key.
 This will be replaced with the field's value in-game.
 
 Creating Fields
