@@ -1,4 +1,4 @@
-HyperChat [![Build Status](https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square)](https://travis-ci.org/hyperfresh/mc-hyperchat) [![Downloads](https://img.shields.io/github/downloads/atom/atom/latest/total.svg?style=flat-square)](https://github.com/hyperfresh/mc-hyperchat/releases/latest)
+HyperChat [![Build Status](https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square)](https://travis-ci.org/hyperfresh/mc-hyperchat) [![Downloads](https://img.shields.io/github/downloads/hyperfresh/mc-hyperchat/latest/total.svg?style=flat-square)](https://github.com/hyperfresh/mc-hyperchat/releases/latest)
 ===
 ###### or nxChat 2.0 for the insiders
 
