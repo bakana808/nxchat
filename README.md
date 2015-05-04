@@ -1,4 +1,4 @@
-HyperChat [![Build Status](https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square)](https://travis-ci.org/hyperfresh/mc-hyperchat) [![Downloads](https://img.shields.io/github/downloads/hyperfresh/mc-hyperchat/latest/total.svg?style=flat-square)](https://github.com/hyperfresh/mc-hyperchat/releases/latest)
+HyperChat [ ![Build Status][build-badge] ][build] [ ![Downloads][dl-badge] ][dl] [ ![Join IRC][irc-badge] ][irc]
 ===
 ###### or nxChat 2.0 for the insiders
 
@@ -94,3 +94,15 @@ For example, this is an included theme, `themes/classic.json`
 2) **define themes using the API**
 
 Further documentation will be made later.
+
+[build-badge]: https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square
+
+[build]: https://travis-ci.org/hyperfresh/mc-hyperchat
+
+[dl-badge]: https://img.shields.io/github/downloads/hyperfresh/mc-hyperchat/latest/total.svg?style=flat-square
+
+[dl]: https://github.com/hyperfresh/mc-hyperchat/releases/latest
+
+[irc-badge]: https://img.shields.io/badge/irc-join%20chat-brightgreen.svg
+
+[irc]: https://webchat.esper.net/?channels=hyperfresh
