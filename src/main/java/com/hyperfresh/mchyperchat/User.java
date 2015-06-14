@@ -13,4 +13,16 @@ public interface User
      * @return the last message this user has sent
      */
     public String getLastMessage();
+
+	/**
+	 * Sets the last message that this user has sent.
+	 *
+	 * In most cases, the {@code HyperChatEventPoster} class should be the only
+	 * class to use this method.
+	 *
+	 * @see com.hyperfresh.mchyperchat.HyperChatEventPoster
+	 *
+	 * @param said the last message this user has sent
+	 */
+	public void setLastMessage(String said);
 }
