@@ -4,7 +4,7 @@ import com.hyperfresh.mchyperchat.User;
 import org.bukkit.entity.Player;
 
 /**
- * An immutable wrapper for Bukkit players.
+ * A wrapper for Bukkit players.
  */
 public class BukkitUser implements User
 {
@@ -27,5 +27,11 @@ public class BukkitUser implements User
 	public String getLastMessage()
 	{
 		return lastSaid;
+	}
+
+	@Override
+	public void setLastMessage(String said)
+	{
+		lastSaid = said;
 	}
 }
