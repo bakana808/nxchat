@@ -3,11 +3,14 @@ package com.hyperfresh.mchyperchat.bukkit;
 import com.hyperfresh.mchyperchat.User;
 import org.bukkit.command.ConsoleCommandSender;
 
+/**
+ * A wrapper for the Bukkit ConsoleCommandSender.
+ */
 public class BukkitConsole implements User
 {
-	ConsoleCommandSender handle;
+	private final ConsoleCommandSender handle;
 
-	String lastSaid;
+	private String lastSaid;
 
 	public BukkitConsole(ConsoleCommandSender console, String lastSaid)
 	{
@@ -25,5 +28,11 @@ public class BukkitConsole implements User
 	public String getLastMessage()
 	{
 		return lastSaid;
+	}
+
+	@Override
+	public void setLastMessage(String said)
+	{
+		lastSaid = said;
 	}
 }
