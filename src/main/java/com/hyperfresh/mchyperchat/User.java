@@ -25,4 +25,11 @@ public interface User
 	 * @param said the last message this user has sent
 	 */
 	public void setLastMessage(String said);
+
+	/**
+	 * Sends a message to the User.
+	 *
+	 * @param message the message to send
+	 */
+	public void sendMessage(String message);
 }
