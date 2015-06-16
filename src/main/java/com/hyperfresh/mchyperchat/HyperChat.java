@@ -67,7 +67,7 @@ public class HyperChat
 	 *
 	 * @return the main list of field
 	 */
-	public static FieldManager getFields()
+	public static FieldManager getFieldManager()
 	{
 		return fieldManager;
 	}

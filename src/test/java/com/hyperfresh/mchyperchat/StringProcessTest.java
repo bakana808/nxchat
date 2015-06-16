@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class StringProcessTest
 {
-    FieldManager fields = HyperChat.getFields();
+    FieldManager fields = HyperChat.getFieldManager();
 
     @Test
     public void FieldProcessTest()
@@ -16,7 +16,7 @@ public class StringProcessTest
 
         String str;
 
-        str = HyperChat.processString("${c}${C}");
+        str = HyperChat.processStaticFields("${c}${C}");
         Assert.assertEquals("REDRED", str);
     }
 }
