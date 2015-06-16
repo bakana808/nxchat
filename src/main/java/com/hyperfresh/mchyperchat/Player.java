@@ -9,6 +9,7 @@ public interface Player extends User
 {
 	/**
 	 * Gets the UUID associated with a player.
+	 *
 	 * @return
 	 */
 	public UUID getUUID();

@@ -1,7 +1,5 @@
 package com.hyperfresh.mchyperchat;
 
-import java.util.UUID;
-
 public class HyperChatEventPoster
 {
 	/**

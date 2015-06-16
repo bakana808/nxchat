@@ -27,17 +27,17 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	 */
 	private User console = new BukkitConsole(Bukkit.getConsoleSender(), null);
 
-    @Override
-    public void onEnable()
-    {
-        HyperChat.onEnable();
-    }
+	@Override
+	public void onEnable()
+	{
+		HyperChat.onEnable();
+	}
 
-    @Override
-    public void onDisable()
-    {
-        HyperChat.onDisable();
-    }
+	@Override
+	public void onDisable()
+	{
+		HyperChat.onDisable();
+	}
 
 	@Override
 	public User getPlayer(UUID id)

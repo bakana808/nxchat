@@ -9,7 +9,7 @@ import java.util.UUID;
  */
 public class BukkitUser implements Player
 {
-    private final org.bukkit.entity.Player handle;
+	private final org.bukkit.entity.Player handle;
 
 	private String lastSaid;
 
@@ -19,10 +19,10 @@ public class BukkitUser implements Player
 		this.lastSaid = lastSaid;
 	}
 
-    public String getName()
-    {
-        return handle.getName();
-    }
+	public String getName()
+	{
+		return handle.getName();
+	}
 
 	@Override
 	public UUID getUUID()

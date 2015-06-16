@@ -6,7 +6,7 @@ public interface HyperChatPlugin
 {
 	/**
 	 * Gets a Player by their UUID.
-	 *
+	 * <p/>
 	 * If this method returns null, then the Player is not online.
 	 *
 	 * @param id
