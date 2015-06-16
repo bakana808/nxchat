@@ -1,6 +1,5 @@
 package com.hyperfresh.mchyperchat.field;
 
-import com.hyperfresh.mchyperchat.Field;
 import com.hyperfresh.mchyperchat.User;
 
 public class DefaultFields

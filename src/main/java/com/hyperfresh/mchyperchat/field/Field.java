@@ -1,4 +1,6 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.field;
+
+import com.hyperfresh.mchyperchat.User;
 
 /**
  * Created by Octopod on 4/16/2015.

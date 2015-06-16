@@ -1,5 +1,8 @@
 package com.hyperfresh.mchyperchat;
 
+import com.hyperfresh.mchyperchat.field.Field;
+import com.hyperfresh.mchyperchat.field.FieldManager;
+
 import java.util.Collection;
 import java.util.Map;
 

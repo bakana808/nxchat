@@ -1,5 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
+import com.hyperfresh.mchyperchat.field.FieldManager;
 import org.junit.Assert;
 import org.junit.Test;
 

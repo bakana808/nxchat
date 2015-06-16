@@ -1,4 +1,7 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.field;
+
+import com.hyperfresh.mchyperchat.User;
+import com.hyperfresh.mchyperchat.field.Field;
 
 import java.util.HashMap;
 import java.util.Map;
