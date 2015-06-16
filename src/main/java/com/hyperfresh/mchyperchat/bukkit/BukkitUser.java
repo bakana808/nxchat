@@ -60,8 +60,8 @@ public class BukkitUser implements Player
 	}
 
 	@Override
-	public void setTheme()
+	public void setTheme(Theme theme)
 	{
-
+		this.theme = theme;
 	}
 }

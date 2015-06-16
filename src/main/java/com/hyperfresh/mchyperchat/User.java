@@ -36,5 +36,5 @@ public interface User
 
 	public Theme getTheme();
 
-	public void setTheme();
+	public void setTheme(Theme theme);
 }
