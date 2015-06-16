@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -20,7 +21,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	/**
 	 * A cache of Users that wrap Players.
 	 */
-	private Map<org.bukkit.entity.Player, Player> userCache = new HashMap<>();
+	private Map<UUID, Player> userCache = new HashMap<>();
 
 	/**
 	 * Bukkit's console object.
@@ -31,12 +32,18 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	public void onEnable()
 	{
 		HyperChat.onEnable(this);
+
+		Bukkit.getOnlinePlayers().stream().forEach(
+			player -> userCache.put(player.getUniqueId(), new BukkitUser(player, null))
+		);
 	}
 
 	@Override
 	public void onDisable()
 	{
 		HyperChat.onDisable();
+
+		userCache.clear();
 	}
 
 	@Override
@@ -48,9 +55,25 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		return player == null ? null : getPlayer(player);
 	}
 
+	@Override
+	public Collection<Player> getPlayers()
+	{
+		return userCache.values();
+	}
+
 	public Player getPlayer(org.bukkit.entity.Player player)
 	{
-		return userCache.computeIfAbsent(player, p -> new BukkitUser(p, null));
+		return userCache.computeIfAbsent(player.getUniqueId(), p -> new BukkitUser(player, null));
+	}
+
+	public void addPlayer(org.bukkit.entity.Player player)
+	{
+		userCache.put(player.getUniqueId(), new BukkitUser(player, null));
+	}
+
+	public void removePlayer(org.bukkit.entity.Player player)
+	{
+		userCache.remove(player.getUniqueId());
 	}
 
 	@Override

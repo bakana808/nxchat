@@ -1,5 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
+import java.util.Collection;
 import java.util.Map;
 
 public class HyperChat
@@ -14,10 +15,18 @@ public class HyperChat
 	private static FieldList FIELD_LIST = new FieldList();
 
 	/**
+	 * The currently used plugin.
+	 */
+	private static HyperChatPlugin plugin = null;
+
+	private static ThemeManager themeManager = new ThemeManager();
+
+	/**
 	 * This will run when this plugin is enabled.
 	 */
-	public static void onEnable()
+	public static void onEnable(HyperChatPlugin plugin)
 	{
+		HyperChat.plugin = plugin;
 		//READ "fields" FOLDER HERE
 	}
 
@@ -26,7 +35,28 @@ public class HyperChat
 	 */
 	public static void onDisable()
 	{
+		HyperChat.plugin = null;
 		FIELD_LIST.clear();
+	}
+
+	/**
+	 * Gets the current console.
+	 *
+	 * @return the current console
+	 */
+	public static User getConsole()
+	{
+		return HyperChat.plugin.getConsole();
+	}
+
+	public static Collection<Player> getPlayers()
+	{
+		return HyperChat.plugin.getPlayers();
+	}
+
+	public static ThemeManager getThemeManager()
+	{
+		return themeManager;
 	}
 
 	/**
@@ -53,11 +83,20 @@ public class HyperChat
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
 	 *
 	 * @param str
+	 * @param user
 	 * @return
 	 */
-	public static String processString(String str)
+	public static String processDynamicFields(String str, User user)
 	{
-		return processString(str, false);
+		for (Map.Entry<String, Field> e : FIELD_LIST.entrySet())
+		{
+			if(!e.getValue().isDynamic())
+			{
+				str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(user));
+			}
+		}
+
+		return str;
 	}
 
 	/**
@@ -67,14 +106,13 @@ public class HyperChat
 	 * will be replaced.
 	 *
 	 * @param str
-	 * @param onlyConstants
 	 * @return
 	 */
-	public static String processString(String str, boolean onlyConstants)
+	public static String processStaticFields(String str)
 	{
 		for (Map.Entry<String, Field> e : FIELD_LIST.entrySet())
 		{
-			if(!onlyConstants || !e.getValue().isDynamic())
+			if(!e.getValue().isDynamic())
 			{
 				str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 			}

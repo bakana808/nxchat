@@ -33,4 +33,8 @@ public interface User
 	 * @param message the message to send
 	 */
 	public void sendMessage(String message);
+
+	public Theme getTheme();
+
+	public void setTheme();
 }

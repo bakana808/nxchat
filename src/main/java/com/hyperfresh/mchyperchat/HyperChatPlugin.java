@@ -1,5 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
+import java.util.Collection;
 import java.util.UUID;
 
 public interface HyperChatPlugin
@@ -13,6 +14,13 @@ public interface HyperChatPlugin
 	 * @return a Player or null if that player is not online
 	 */
 	public Player getPlayer(UUID id);
+
+	/**
+	 * Gets all Players on the server.
+	 *
+	 * @return a set of Players on the server
+	 */
+	public Collection<Player> getPlayers();
 
 	/**
 	 * Gets the console of the server.

@@ -1,6 +1,9 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
+import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Player;
+import com.hyperfresh.mchyperchat.Theme;
+import com.hyperfresh.mchyperchat.VanillaTheme;
 
 import java.util.UUID;
 
@@ -12,6 +15,8 @@ public class BukkitUser implements Player
 	private final org.bukkit.entity.Player handle;
 
 	private String lastSaid;
+
+	private Theme theme = HyperChat.getThemeManager().get(VanillaTheme.class);
 
 	public BukkitUser(org.bukkit.entity.Player player, String lastSaid)
 	{
@@ -46,5 +51,17 @@ public class BukkitUser implements Player
 	public void sendMessage(String message)
 	{
 		handle.sendMessage(message);
+	}
+
+	@Override
+	public Theme getTheme()
+	{
+		return null;
+	}
+
+	@Override
+	public void setTheme()
+	{
+
 	}
 }

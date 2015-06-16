@@ -1,14 +1,46 @@
 package com.hyperfresh.mchyperchat;
 
-public class Theme
+public interface Theme
 {
-	private String name;
+	/**
+	 * Returns the ID of this theme.
+	 *
+	 * @return
+	 */
+	public String getID();
 
-	private String player_header;
+	/**
+	 * Returns the name of this theme.
+	 *
+	 * @return
+	 */
+	public String getName();
 
-	//Prints every time a player chats.
-	private String player_message;
+	/**
+	 * Returns the author of this theme.
+	 *
+	 * @return
+	 */
+	public String getAuthor();
 
-	//Prints after the end of a player's chain of consecutive messages.
-	private String player_footer;
+	/**
+	 * Returns the format that is used in a chat header.
+	 *
+	 * @return
+	 */
+	public String getChatHeaderFormat();
+
+	/**
+	 * Returns the format that is used in a chat message.
+	 *
+	 * @return
+	 */
+	public String getChatMessageFormat();
+
+	/**
+	 * Returns the format that is used in a chat footer.
+	 *
+	 * @return
+	 */
+	public String getChatFooterFormat();
 }
