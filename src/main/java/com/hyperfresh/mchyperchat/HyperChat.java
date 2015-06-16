@@ -10,6 +10,7 @@ public class HyperChat
 {
 	private HyperChat()
 	{
+
 	}
 
 	/**
