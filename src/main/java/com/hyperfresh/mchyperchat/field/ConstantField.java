@@ -10,7 +10,7 @@ import com.hyperfresh.mchyperchat.User;
  *
  * @author octopod
  */
-class ConstantField extends Field
+class ConstantField implements Field
 {
 	private String value;
 	private String[] names;

@@ -4,7 +4,7 @@ import com.hyperfresh.mchyperchat.User;
 
 public class DefaultFields
 {
-	public static class Name extends Field
+	public static class Name implements Field
 	{
 		@Override
 		public String[] getFieldNames()
@@ -19,7 +19,7 @@ public class DefaultFields
 		}
 	}
 
-	public static class Message extends Field
+	public static class Message implements Field
 	{
 		@Override
 		public String[] getFieldNames()

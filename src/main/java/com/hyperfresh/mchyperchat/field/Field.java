@@ -3,29 +3,33 @@ package com.hyperfresh.mchyperchat.field;
 import com.hyperfresh.mchyperchat.User;
 
 /**
- * Created by Octopod on 4/16/2015.
+ * @author octopod
  */
-public abstract class Field
+public interface Field
 {
-	// an empty integer array
-	private static int[] EMPTY = new int[0];
-
 	/**
 	 * Returns a list of names of this field.
 	 *
 	 * @return an array of strings
 	 */
-	public abstract String[] getFieldNames();
+	public String[] getFieldNames();
 
 	/**
-	 * Returns true if this field is "dynamic."
-	 * Static field will be processed into messages once when it is registered.
-	 * Dynamic field will be processed into messages every time a player chats.
-	 * Keep field static if the values are constant (never changes).
+	 * Returns true if this field can potentially return different values every time it is used.
+	 *
+	 * <p>
+	 *     Static fields will be processed into a theme's formats when it is registered,
+	 *     whereas dynamic fields will be processed into messages every time a player chats.
+	 * </p>
+	 *
+	 * <p>
+	 *     If your Field returns the same value every time it is used, it is recommended that
+	 *     you return {@code false} for this method or consider using {@code ConstantField} instead.
+	 * </p>
 	 *
 	 * @return true if this field is dynamic
 	 */
-	public boolean isDynamic()
+	public default boolean isDynamic()
 	{
 		return true;
 	}
@@ -35,9 +39,9 @@ public abstract class Field
 	 *
 	 * @return an array of expected argument sizes
 	 */
-	public int[] numArgs()
+	public default int[] numArgs()
 	{
-		return EMPTY;
+		return new int[0];
 	}
 
 	/**
@@ -46,5 +50,5 @@ public abstract class Field
 	 * @param args optional arguments
 	 * @return the current value
 	 */
-	public abstract String getFieldValue(User sender, String... args);
+	public String getFieldValue(User user, String... args);
 }
