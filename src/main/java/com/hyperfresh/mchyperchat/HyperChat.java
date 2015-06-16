@@ -27,7 +27,7 @@ public class HyperChat
 	public static void onEnable(HyperChatPlugin plugin)
 	{
 		HyperChat.plugin = plugin;
-		//READ "fields" FOLDER HERE
+		//READ "field" FOLDER HERE
 	}
 
 	/**
@@ -60,9 +60,9 @@ public class HyperChat
 	}
 
 	/**
-	 * Get the main list of fields.
+	 * Get the main list of field.
 	 *
-	 * @return the main list of fields
+	 * @return the main list of field
 	 */
 	public static FieldManager getFields()
 	{
@@ -71,7 +71,7 @@ public class HyperChat
 
 	/**
 	 * Replaces the existing FieldList with a new one,
-	 * effectively deleting all existing fields.
+	 * effectively deleting all existing field.
 	 */
 	public static void resetFields()
 	{
@@ -79,7 +79,7 @@ public class HyperChat
 	}
 
 	/**
-	 * Replaces all fields in a string with their values.
+	 * Replaces all field in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
 	 *
 	 * @param str
@@ -100,9 +100,9 @@ public class HyperChat
 	}
 
 	/**
-	 * Replaces all fields in a string with their values.
+	 * Replaces all field in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
-	 * If {@code onlyConstants} is true, then only fields marked as static
+	 * If {@code onlyConstants} is true, then only field marked as static
 	 * will be replaced.
 	 *
 	 * @param str

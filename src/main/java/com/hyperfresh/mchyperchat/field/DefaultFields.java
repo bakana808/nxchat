@@ -1,4 +1,4 @@
-package com.hyperfresh.mchyperchat.fields;
+package com.hyperfresh.mchyperchat.field;
 
 import com.hyperfresh.mchyperchat.Field;
 import com.hyperfresh.mchyperchat.User;

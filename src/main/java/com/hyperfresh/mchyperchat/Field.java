@@ -17,9 +17,9 @@ public abstract class Field
 
 	/**
 	 * Returns true if this field is "dynamic."
-	 * Static fields will be processed into messages once when it is registered.
-	 * Dynamic fields will be processed into messages every time a player chats.
-	 * Keep fields static if the values are constant (never changes).
+	 * Static field will be processed into messages once when it is registered.
+	 * Dynamic field will be processed into messages every time a player chats.
+	 * Keep field static if the values are constant (never changes).
 	 *
 	 * @return true if this field is dynamic
 	 */

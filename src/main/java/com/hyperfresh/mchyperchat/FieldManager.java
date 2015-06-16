@@ -82,7 +82,7 @@ public class FieldManager
 	}
 
 	/**
-	 * Clears the entire list of fields.
+	 * Clears the entire list of field.
 	 */
 	public void clear()
 	{
