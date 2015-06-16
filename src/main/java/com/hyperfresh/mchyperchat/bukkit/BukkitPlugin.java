@@ -2,10 +2,10 @@ package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.HyperChatPlugin;
+import com.hyperfresh.mchyperchat.Player;
 import com.hyperfresh.mchyperchat.User;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	/**
 	 * A cache of Users that wrap Players.
 	 */
-	private Map<Player, User> userCache = new HashMap<>();
+	private Map<org.bukkit.entity.Player, Player> userCache = new HashMap<>();
 
 	/**
 	 * Bukkit's console object.
@@ -40,15 +40,15 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	}
 
 	@Override
-	public User getPlayer(UUID id)
+	public Player getPlayer(UUID id)
 	{
-		Player player = Bukkit.getPlayer(id);
+		org.bukkit.entity.Player player = Bukkit.getPlayer(id);
 
 		//return null if the player is null
 		return player == null ? null : getPlayer(player);
 	}
 
-	public User getPlayer(Player player)
+	public Player getPlayer(org.bukkit.entity.Player player)
 	{
 		return userCache.computeIfAbsent(player, p -> new BukkitUser(p, null));
 	}
