@@ -28,6 +28,8 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	 */
 	private User console = new BukkitConsole(Bukkit.getConsoleSender(), null);
 
+	private BukkitListener listener = new BukkitListener(this);
+
 	@Override
 	public void onEnable()
 	{
@@ -36,6 +38,8 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		Bukkit.getOnlinePlayers().stream().forEach(
 			player -> userCache.put(player.getUniqueId(), new BukkitUser(player, null))
 		);
+
+		Bukkit.getPluginManager().registerEvents(listener, this);
 	}
 
 	@Override
