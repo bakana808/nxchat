@@ -60,11 +60,24 @@ public class HyperChat
 		return processString(str, false);
 	}
 
-	public static String processString(String str, boolean staticOnly)
+	/**
+	 * Replaces all fields in a string with their values.
+	 * Fields are detected by the pattern <code>"${<field name>}"</code>
+	 * If {@code onlyConstants} is true, then only fields marked as static
+	 * will be replaced.
+	 *
+	 * @param str
+	 * @param onlyConstants
+	 * @return
+	 */
+	public static String processString(String str, boolean onlyConstants)
 	{
 		for (Map.Entry<String, Field> e : FIELD_LIST.entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
+			if(!onlyConstants || !e.getValue().isDynamic())
+			{
+				str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
+			}
 		}
 
 		return str;
