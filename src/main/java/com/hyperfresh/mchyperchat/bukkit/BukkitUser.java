@@ -41,4 +41,10 @@ public class BukkitUser implements Player
 	{
 		lastSaid = said;
 	}
+
+	@Override
+	public void sendMessage(String message)
+	{
+		handle.sendMessage(message);
+	}
 }
