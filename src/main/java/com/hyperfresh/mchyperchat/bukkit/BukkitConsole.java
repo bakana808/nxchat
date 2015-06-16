@@ -35,4 +35,10 @@ public class BukkitConsole implements User
 	{
 		lastSaid = said;
 	}
+
+	@Override
+	public void sendMessage(String message)
+	{
+		handle.sendMessage(message);
+	}
 }
