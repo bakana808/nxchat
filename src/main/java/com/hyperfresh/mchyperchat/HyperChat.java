@@ -12,7 +12,7 @@ public class HyperChat
 	/**
 	 * The current instance of FieldList.
 	 */
-	private static FieldList FIELD_LIST = new FieldList();
+	private static FieldManager fieldManager = new FieldManager();
 
 	/**
 	 * The currently used plugin.
@@ -36,7 +36,7 @@ public class HyperChat
 	public static void onDisable()
 	{
 		HyperChat.plugin = null;
-		FIELD_LIST.clear();
+		fieldManager.clear();
 	}
 
 	/**
@@ -64,9 +64,9 @@ public class HyperChat
 	 *
 	 * @return the main list of fields
 	 */
-	public static FieldList getFields()
+	public static FieldManager getFields()
 	{
-		return FIELD_LIST;
+		return fieldManager;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class HyperChat
 	 */
 	public static void resetFields()
 	{
-		FIELD_LIST = new FieldList();
+		fieldManager = new FieldManager();
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class HyperChat
 	 */
 	public static String processDynamicFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : FIELD_LIST.entrySet())
+		for (Map.Entry<String, Field> e : fieldManager.entrySet())
 		{
 			if(!e.getValue().isDynamic())
 			{
@@ -110,7 +110,7 @@ public class HyperChat
 	 */
 	public static String processStaticFields(String str)
 	{
-		for (Map.Entry<String, Field> e : FIELD_LIST.entrySet())
+		for (Map.Entry<String, Field> e : fieldManager.entrySet())
 		{
 			if(!e.getValue().isDynamic())
 			{

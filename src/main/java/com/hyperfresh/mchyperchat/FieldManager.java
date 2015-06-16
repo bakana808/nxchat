@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class FieldList
+public class FieldManager
 {
 	/**
 	 * The map where all the key-field pairs are stored.
