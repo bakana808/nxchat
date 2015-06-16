@@ -30,7 +30,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	@Override
 	public void onEnable()
 	{
-		HyperChat.onEnable();
+		HyperChat.onEnable(this);
 	}
 
 	@Override
