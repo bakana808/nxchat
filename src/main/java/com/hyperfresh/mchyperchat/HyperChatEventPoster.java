@@ -1,5 +1,10 @@
 package com.hyperfresh.mchyperchat;
 
+/**
+ * Event entry methods for HyperChat.
+ *
+ * When implementing a server API, please redirect all their events to this class.
+ */
 public class HyperChatEventPoster
 {
 	/**
