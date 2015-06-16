@@ -20,32 +20,26 @@ public class FieldManager
 	 */
 	public void addField(String[] keys, String value)
 	{
-		addField(keys, new ConstantField(value, keys));
+		addField(new ConstantField(value, keys));
 	}
 
 	public void addField(String key, String value)
 	{
-		addField(key, new ConstantField(value, key));
+		addField(new ConstantField(value, key));
 	}
 
 	/**
 	 * Adds a field to this list.
 	 * If your field returns a constant value, please use <code>addField(keys, value)</code> instead.
 	 *
-	 * @param keys  an array of keys to use for this field
 	 * @param field the field
 	 */
-	public void addField(String[] keys, Field field)
+	public void addField(Field field)
 	{
-		for (String key : keys)
+		for(String key: field.getFieldNames())
 		{
 			map.put(key, field);
 		}
-	}
-
-	public void addField(String key, Field field)
-	{
-		map.put(key, field);
 	}
 
 	/**
