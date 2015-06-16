@@ -43,6 +43,40 @@ public class FieldManager
 	}
 
 	/**
+	 * Attempts to add inner classes that extend {@code Field}.
+	 *
+	 * It will try to instantiate each class without arguments and will
+	 * ignore the class if it throws an exception.
+	 *
+	 * @param clazz
+	 * @return
+	 */
+	public int addFieldContainer(Class<?> clazz)
+	{
+		int fieldCount = 0;
+
+		for(Class<?> c: clazz.getClasses())
+		{
+			if(Field.class.isAssignableFrom(c))
+			{
+				Class<? extends Field> fieldClass = (Class<? extends Field>)c;
+
+				try
+				{
+					Field field = fieldClass.newInstance();
+					addField(field);
+					fieldCount++;
+				} catch (InstantiationException | IllegalAccessException e)
+				{
+					//ignore this field
+				}
+			}
+		}
+
+		return fieldCount;
+	}
+
+	/**
 	 * Gets a field from the list by a key.
 	 * It will return null if the key does not exist.
 	 *
