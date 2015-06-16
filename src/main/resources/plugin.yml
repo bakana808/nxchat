@@ -1,5 +1,5 @@
 name: mc-HyperChat
-main: com.hyperfresh.mchyperchat.BukkitPlugin
+main: com.hyperfresh.mchyperchat.bukkit.BukkitPlugin
 version: ${version}
 permissions:
     # is the player allowed to set their theme?
