@@ -28,6 +28,12 @@ class ConstantField implements Field
 	}
 
 	@Override
+	public boolean isDynamic()
+	{
+		return false;
+	}
+
+	@Override
 	public String getFieldValue(User sender, String... args)
 	{
 		return value;
