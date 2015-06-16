@@ -3,7 +3,6 @@ package com.hyperfresh.mchyperchat.bukkit;
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Theme;
 import com.hyperfresh.mchyperchat.User;
-import com.hyperfresh.mchyperchat.VanillaTheme;
 import org.bukkit.command.ConsoleCommandSender;
 
 /**
@@ -15,7 +14,7 @@ public class BukkitConsole implements User
 
 	private String lastSaid;
 
-	private Theme theme = HyperChat.getThemeManager().get(VanillaTheme.class);
+	private Theme theme = HyperChat.getThemeManager().getDefaultTheme();
 
 	public BukkitConsole(ConsoleCommandSender console, String lastSaid)
 	{
