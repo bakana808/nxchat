@@ -104,14 +104,40 @@ public class FieldManager
 		return fields.containsKey(key);
 	}
 
-	/**
-	 * Gets an <code>EntrySet</code> where each entry is a string key and a field value.
-	 *
-	 * @return the entrySet of this list.
-	 */
-	public Set<Map.Entry<String, Field>> entrySet()
+	public Map<String, Field> getStaticFields()
 	{
-		return fields.entrySet();
+		Map<String, Field> staticFields = new HashMap<>();
+
+		fields.entrySet().forEach
+		(
+			e ->
+			{
+				if(!e.getValue().isDynamic())
+				{
+					staticFields.put(e.getKey(), e.getValue());
+				}
+			}
+		);
+
+		return staticFields;
+	}
+
+	public Map<String, Field> getDynamicFields()
+	{
+		Map<String, Field> dynamicFields = new HashMap<>();
+
+		fields.entrySet().forEach
+			(
+				e ->
+				{
+					if(e.getValue().isDynamic())
+					{
+						dynamicFields.put(e.getKey(), e.getValue());
+					}
+				}
+			);
+
+		return dynamicFields;
 	}
 
 	/**

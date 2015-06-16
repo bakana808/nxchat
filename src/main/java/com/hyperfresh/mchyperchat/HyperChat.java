@@ -92,12 +92,9 @@ public class HyperChat
 	 */
 	public static String processDynamicFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : fieldManager.entrySet())
+		for (Map.Entry<String, Field> e : fieldManager.getDynamicFields().entrySet())
 		{
-			if(!e.getValue().isDynamic())
-			{
-				str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(user));
-			}
+			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(user));
 		}
 
 		return str;
@@ -114,12 +111,9 @@ public class HyperChat
 	 */
 	public static String processStaticFields(String str)
 	{
-		for (Map.Entry<String, Field> e : fieldManager.entrySet())
+		for (Map.Entry<String, Field> e : fieldManager.getStaticFields().entrySet())
 		{
-			if(!e.getValue().isDynamic())
-			{
-				str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
-			}
+			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 		}
 
 		return str;
