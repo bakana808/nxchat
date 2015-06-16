@@ -1,8 +1,5 @@
 package com.hyperfresh.mchyperchat.field;
 
-import com.hyperfresh.mchyperchat.User;
-import com.hyperfresh.mchyperchat.field.Field;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -23,12 +20,12 @@ public class FieldManager
 	 */
 	public void addField(String[] keys, String value)
 	{
-		addField(keys, new StaticField(value, keys));
+		addField(keys, new ConstantField(value, keys));
 	}
 
 	public void addField(String key, String value)
 	{
-		addField(key, new StaticField(value, key));
+		addField(key, new ConstantField(value, key));
 	}
 
 	/**
@@ -92,30 +89,4 @@ public class FieldManager
 		map = new HashMap<>();
 	}
 
-	/**
-	 * Represents a static key-value field.
-	 */
-	private static class StaticField extends Field
-	{
-		private String value;
-		private String[] names;
-
-		public StaticField(String value, String... names)
-		{
-			this.value = value;
-			this.names = names;
-		}
-
-		@Override
-		public String[] getFieldNames()
-		{
-			return names;
-		}
-
-		@Override
-		public String getFieldValue(User sender, String... args)
-		{
-			return value;
-		}
-	}
 }
