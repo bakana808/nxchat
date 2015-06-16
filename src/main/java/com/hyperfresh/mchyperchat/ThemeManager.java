@@ -9,6 +9,11 @@ public class ThemeManager
 
 	private final Map<Class<? extends Theme>, Theme> themesByClass = new HashMap<>();
 
+	public ThemeManager()
+	{
+		add(new VanillaTheme());
+	}
+
 	public void add(Theme theme)
 	{
 		themes.put(theme.getID(), theme);
