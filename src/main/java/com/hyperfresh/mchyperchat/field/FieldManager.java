@@ -11,6 +11,11 @@ public class FieldManager
 	 */
 	private HashMap<String, Field> fields = new HashMap<>();
 
+	public FieldManager()
+	{
+		addFieldContainer(DefaultFields.class); //register default fields
+	}
+
 	/**
 	 * Adds a static key-value field to this list.
 	 * Please use this if your field's value is a constant.
