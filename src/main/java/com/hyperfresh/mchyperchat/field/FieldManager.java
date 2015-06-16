@@ -9,7 +9,7 @@ public class FieldManager
 	/**
 	 * The map where all the key-field pairs are stored.
 	 */
-	private HashMap<String, Field> map = new HashMap<>();
+	private HashMap<String, Field> fields = new HashMap<>();
 
 	/**
 	 * Adds a static key-value field to this list.
@@ -38,7 +38,7 @@ public class FieldManager
 	{
 		for(String key: field.getFieldNames())
 		{
-			map.put(key, field);
+			fields.put(key, field);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class FieldManager
 	 */
 	public Field getField(String key)
 	{
-		return map.get(key);
+		return fields.get(key);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class FieldManager
 	 */
 	public boolean fieldExists(String key)
 	{
-		return map.containsKey(key);
+		return fields.containsKey(key);
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class FieldManager
 	 */
 	public Set<Map.Entry<String, Field>> entrySet()
 	{
-		return map.entrySet();
+		return fields.entrySet();
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class FieldManager
 	 */
 	public void clear()
 	{
-		map = new HashMap<>();
+		fields = new HashMap<>();
 	}
 
 }
