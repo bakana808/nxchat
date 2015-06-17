@@ -5,7 +5,6 @@ import com.hyperfresh.mchyperchat.HyperChatPlugin;
 import com.hyperfresh.mchyperchat.Player;
 import com.hyperfresh.mchyperchat.User;
 import org.bukkit.Bukkit;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collection;
@@ -26,7 +25,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	/**
 	 * Bukkit's console object.
 	 */
-	private User console = new BukkitConsole(Bukkit.getConsoleSender(), null);
+	private User console;
 
 	private BukkitListener listener = new BukkitListener(this);
 
@@ -34,6 +33,8 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	public void onEnable()
 	{
 		HyperChat.onEnable(this);
+
+		this.console = new BukkitConsole(Bukkit.getConsoleSender(), null);
 
 		Bukkit.getOnlinePlayers().stream().forEach(
 			player -> userCache.put(player.getUniqueId(), new BukkitUser(player, null))
