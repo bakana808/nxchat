@@ -2,7 +2,6 @@ package com.hyperfresh.mchyperchat.field;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class FieldManager
 {
