@@ -55,7 +55,7 @@ public class BukkitUser implements Player
 	@Override
 	public Theme getTheme()
 	{
-		return null;
+		return theme;
 	}
 
 	@Override
