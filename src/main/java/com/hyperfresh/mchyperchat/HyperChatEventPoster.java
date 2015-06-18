@@ -26,6 +26,8 @@ public class HyperChatEventPoster
 	 */
 	public void onPlayerChat(Player spoke, String said)
 	{
+		hyperChat.processInlineFields(said); //replace fields they may have typed in here
+
 		Collection<Player> players = hyperChat.getPlayers();
 
 		spoke.setLastSaid(said);
