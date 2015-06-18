@@ -35,6 +35,17 @@ public interface Field
 	}
 
 	/**
+	 * Returns true if a player can type in this field in his/her message.
+	 * Inlined fields, regardless of them being dynamic or not, will be processed when they chat.
+	 *
+	 * @return true if this field can be inlined
+	 */
+	public default boolean canInline()
+	{
+		return false;
+	}
+
+	/**
 	 * Returns an array of expected argument sizes. Defaults to 0.
 	 *
 	 * @return an array of expected argument sizes
