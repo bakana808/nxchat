@@ -37,15 +37,18 @@ public class StringProcessTest
 	@Test
 	public void FieldProcessTest()
 	{
-		HyperChat.onEnable(new BlankPlugin());
-		FieldManager fields = HyperChat.getFieldManager();
+		HyperChat hyperChat = HyperChat.getInstance();
+
+		hyperChat.onEnable(new BlankPlugin());
+
+		FieldManager fields = hyperChat.getFieldManager();
 
 		fields.clear();
 		fields.addField(new String[]{"c"}, "RED");
 
 		String str;
 
-		str = HyperChat.processStaticFields("${c}${C}");
+		str = hyperChat.processStaticFields("${c}${C}");
 		Assert.assertEquals("REDRED", str);
 	}
 }
