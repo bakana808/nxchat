@@ -13,14 +13,13 @@ public class BukkitUser implements Player
 {
 	private final org.bukkit.entity.Player handle;
 
-	private String lastSaid;
+	private Theme theme;
+	private String lastSaid = null;
 
-	private Theme theme = HyperChat.getThemeManager().getDefaultTheme();
-
-	public BukkitUser(org.bukkit.entity.Player player, String lastSaid)
+	public BukkitUser(HyperChat hyperChat, org.bukkit.entity.Player player)
 	{
 		this.handle = player;
-		this.lastSaid = lastSaid;
+		this.theme = hyperChat.getThemeManager().getDefaultTheme();
 	}
 
 	public String getName()
