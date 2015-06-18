@@ -20,7 +20,7 @@ public class HyperChatEventPoster
 	 * The amount of time in MS between messages from the same player
 	 * until their header is printed again.
 	 */
-	private static final long REPRINT_HEADER_TIMEOUT = 8000;
+	private static final long REPRINT_HEADER_TIMEOUT = 10000;
 
 	private User lastSpoke = null;    // the last player that spoke
 	private long lastSpokeTime = 0L;  // the last time a player spoke
