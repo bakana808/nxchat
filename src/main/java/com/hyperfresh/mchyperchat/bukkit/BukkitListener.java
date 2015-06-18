@@ -41,7 +41,7 @@ public class BukkitListener implements Listener
 
 		Player player = plugin.getPlayer(event.getPlayer());
 
-		hyperChat.getEventPoster().onPlayerChat(player, event.getMessage());
+		hyperChat.getEventPoster().chatAs(player, event.getMessage());
 	}
 
 	@EventHandler
@@ -57,7 +57,7 @@ public class BukkitListener implements Listener
 
 				event.setCommand("");
 
-				hyperChat.getEventPoster().onConsoleChat(said);
+				hyperChat.getEventPoster().chatAs(plugin.getConsole(), said);
 			}
 		}
 	}
