@@ -12,14 +12,13 @@ public class BukkitConsole implements User
 {
 	private final ConsoleCommandSender handle;
 
-	private String lastSaid;
+	private Theme theme;
+	private String lastSaid = null;
 
-	private Theme theme = HyperChat.getThemeManager().getDefaultTheme();
-
-	public BukkitConsole(ConsoleCommandSender console, String lastSaid)
+	public BukkitConsole(HyperChat hyperChat, ConsoleCommandSender console)
 	{
 		this.handle = console;
-		this.lastSaid = lastSaid;
+		this.theme = hyperChat.getThemeManager().getDefaultTheme();
 	}
 
 	@Override
