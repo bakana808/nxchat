@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.util.Collection;
 import java.util.UUID;
 
-public class StringProcessTest
+public class FieldTests
 {
 	public class BlankPlugin implements HyperChatPlugin
 	{
@@ -34,21 +34,27 @@ public class StringProcessTest
 		}
 	}
 
-	@Test
-	public void FieldProcessTest()
+	HyperChat hyperChat;
+
+	public FieldTests()
 	{
-		HyperChat hyperChat = HyperChat.getInstance();
+		hyperChat = HyperChat.getInstance();
 
 		hyperChat.onEnable(new BlankPlugin());
 
 		FieldManager fields = hyperChat.getFieldManager();
 
-		fields.clear();
-		fields.addField(new String[]{"c"}, "RED");
+		fields.addField("c", "Red");
+	}
 
-		String str;
+	/**
+	 * Test if static fields process correctly.
+	 */
+	@Test
+	public void FieldProcessTest()
+	{
+		String str = hyperChat.processStaticFields("${c} ${C} $c");
 
-		str = hyperChat.processStaticFields("${c}${C}");
-		Assert.assertEquals("REDRED", str);
+		Assert.assertEquals("Red Red $c", str);
 	}
 }
