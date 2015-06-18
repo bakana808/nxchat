@@ -2,6 +2,7 @@ package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Player;
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -51,10 +52,12 @@ public class BukkitListener implements Listener
 			String[] args = event.getCommand().split(" ");
 			if(args[0].equals("say"))
 			{
+				//remove the "say" part of the command
+				String said = String.join(" ", (String[])ArrayUtils.remove(args, 0));
+
 				event.setCommand("");
 
-				//remove the "say " part of the command
-				hyperChat.getEventPoster().onConsoleChat(event.getCommand().substring(4));
+				hyperChat.getEventPoster().onConsoleChat(said);
 			}
 		}
 	}
