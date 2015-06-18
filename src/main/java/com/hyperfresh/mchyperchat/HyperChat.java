@@ -97,7 +97,7 @@ public class HyperChat
 	}
 
 	/**
-	 * Replaces all field in a string with their values.
+	 * Replaces all dynamic fields in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
 	 *
 	 * @param str
@@ -115,10 +115,8 @@ public class HyperChat
 	}
 
 	/**
-	 * Replaces all field in a string with their values.
+	 * Replaces all static fields in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
-	 * If {@code onlyConstants} is true, then only field marked as static
-	 * will be replaced.
 	 *
 	 * @param str
 	 * @return
