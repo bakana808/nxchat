@@ -16,7 +16,14 @@ public class HyperChatEventPoster
 		this.hyperChat = hyperChat;
 	}
 
+	/**
+	 * The amount of time in MS between messages from the same player
+	 * until their header is printed again.
+	 */
+	private static final long REPRINT_HEADER_TIMEOUT = 8000;
+
 	private User lastSpoke = null;
+	private long lastSpokeTime = 0L;
 
 	/**
 	 * Executes when a player has said something.
@@ -32,9 +39,14 @@ public class HyperChatEventPoster
 
 		spoke.setLastSaid(said);
 
-		if(spoke != lastSpoke)
+		// print the previous player's footer and this player's header if either:
+		//  - the previous player is NOT this player or
+		//  - the time between messages from the same player is equal or greater than
+		//    REPRINT_HEADER_TIMEOUT
+		if(spoke != lastSpoke || (System.currentTimeMillis() - lastSpokeTime) >= REPRINT_HEADER_TIMEOUT)
 		{
-			if(lastSpoke != null) //print the last player's footer
+			//print the last player's footer
+			if(lastSpoke != null)
 			{
 				players.stream().forEach
 				(
@@ -77,6 +89,7 @@ public class HyperChatEventPoster
 		);
 
 		lastSpoke = spoke;
+		lastSpokeTime = System.currentTimeMillis();
 	}
 
 	/**
