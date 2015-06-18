@@ -22,6 +22,7 @@ public class HyperChat
 
 	private final FieldManager fieldManager = new FieldManager();
 	private final ThemeManager themeManager = new ThemeManager();
+	private final HyperChatEventPoster eventPoster = new HyperChatEventPoster(this);
 
 	/**
 	 * Gets the current instance of HyperChat
@@ -79,6 +80,11 @@ public class HyperChat
 	public FieldManager getFieldManager()
 	{
 		return this.fieldManager;
+	}
+
+	public HyperChatEventPoster getEventPoster()
+	{
+		return this.eventPoster;
 	}
 
 	/**

@@ -9,7 +9,14 @@ import java.util.Collection;
  */
 public class HyperChatEventPoster
 {
-	public static User lastSpoke = null;
+	private HyperChat hyperChat;
+
+	public HyperChatEventPoster(HyperChat hyperChat)
+	{
+		this.hyperChat = hyperChat;
+	}
+
+	private User lastSpoke = null;
 
 	/**
 	 * Executes when a player has said something.
@@ -17,9 +24,9 @@ public class HyperChatEventPoster
 	 * @param spoke
 	 * @param said
 	 */
-	public static void onPlayerChat(Player spoke, String said)
+	public void onPlayerChat(Player spoke, String said)
 	{
-		Collection<Player> players = HyperChat.getPlayers();
+		Collection<Player> players = hyperChat.getPlayers();
 
 		spoke.setLastMessage(said);
 
@@ -34,7 +41,7 @@ public class HyperChatEventPoster
 						String footerFormat = p.getTheme().getChatFooterFormat();
 						if(footerFormat != null)
 						{
-							p.sendMessage(HyperChat.processDynamicFields(footerFormat, lastSpoke));
+							p.sendMessage(hyperChat.processDynamicFields(footerFormat, lastSpoke));
 						}
 					}
 				);
@@ -48,7 +55,7 @@ public class HyperChatEventPoster
 					String headerFormat = spoke.getTheme().getChatHeaderFormat();
 					if(headerFormat != null)
 					{
-						p.sendMessage(HyperChat.processDynamicFields(headerFormat, spoke));
+						p.sendMessage(hyperChat.processDynamicFields(headerFormat, spoke));
 					}
 				}
 			);
@@ -62,7 +69,7 @@ public class HyperChatEventPoster
 				String messageFormat = spoke.getTheme().getChatMessageFormat();
 				if(messageFormat != null)
 				{
-					p.sendMessage(HyperChat.processDynamicFields(messageFormat, spoke));
+					p.sendMessage(hyperChat.processDynamicFields(messageFormat, spoke));
 				}
 			}
 		);
@@ -76,8 +83,8 @@ public class HyperChatEventPoster
 	 *
 	 * @param said what the console said.
 	 */
-	public static void onConsoleChat(String said)
+	public void onConsoleChat(String said)
 	{
-		HyperChat.getConsole().setLastMessage(said);
+		hyperChat.getConsole().setLastMessage(said);
 	}
 }
