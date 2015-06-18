@@ -14,33 +14,31 @@ public class HyperChat
 	}
 
 	/**
-	 * The current instance of FieldList.
+	 * The current instance of HyperChat
 	 */
-	private static FieldManager fieldManager = new FieldManager();
+	private static final HyperChat instance = new HyperChat();
 
-	/**
-	 * The currently used plugin.
-	 */
-	private static HyperChatPlugin plugin = null;
+	private HyperChatPlugin plugin = null;
 
-	private static ThemeManager themeManager = new ThemeManager();
+	private final FieldManager fieldManager = new FieldManager();
+	private final ThemeManager themeManager = new ThemeManager();
 
 	/**
 	 * This will run when this plugin is enabled.
 	 */
-	public static void onEnable(HyperChatPlugin plugin)
+	public void onEnable(HyperChatPlugin plugin)
 	{
-		HyperChat.plugin = plugin;
+		this.plugin = plugin;
 		//READ "field" FOLDER HERE
 	}
 
 	/**
 	 * This will run when this plugin is disabled.
 	 */
-	public static void onDisable()
+	public void onDisable()
 	{
-		HyperChat.plugin = null;
-		fieldManager.clear();
+		this.plugin = null;
+		this.fieldManager.clear();
 	}
 
 	/**
@@ -48,19 +46,19 @@ public class HyperChat
 	 *
 	 * @return the current console
 	 */
-	public static User getConsole()
+	public User getConsole()
 	{
-		return HyperChat.plugin.getConsole();
+		return this.plugin.getConsole();
 	}
 
-	public static Collection<Player> getPlayers()
+	public Collection<Player> getPlayers()
 	{
-		return HyperChat.plugin.getPlayers();
+		return this.plugin.getPlayers();
 	}
 
-	public static ThemeManager getThemeManager()
+	public ThemeManager getThemeManager()
 	{
-		return themeManager;
+		return this.themeManager;
 	}
 
 	/**
@@ -68,18 +66,18 @@ public class HyperChat
 	 *
 	 * @return the main list of field
 	 */
-	public static FieldManager getFieldManager()
+	public FieldManager getFieldManager()
 	{
-		return fieldManager;
+		return this.fieldManager;
 	}
 
 	/**
 	 * Replaces the existing FieldList with a new one,
 	 * effectively deleting all existing field.
 	 */
-	public static void resetFields()
+	public void resetFields()
 	{
-		fieldManager = new FieldManager();
+		this.fieldManager.clear();
 	}
 
 	/**
@@ -90,9 +88,9 @@ public class HyperChat
 	 * @param user
 	 * @return
 	 */
-	public static String processDynamicFields(String str, User user)
+	public String processDynamicFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : fieldManager.getDynamicFields().entrySet())
+		for (Map.Entry<String, Field> e : this.fieldManager.getDynamicFields().entrySet())
 		{
 			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(user));
 		}
@@ -109,9 +107,9 @@ public class HyperChat
 	 * @param str
 	 * @return
 	 */
-	public static String processStaticFields(String str)
+	public String processStaticFields(String str)
 	{
-		for (Map.Entry<String, Field> e : fieldManager.getStaticFields().entrySet())
+		for (Map.Entry<String, Field> e : this.fieldManager.getStaticFields().entrySet())
 		{
 			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 		}
