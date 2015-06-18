@@ -140,7 +140,7 @@ public class HyperChat
 	 */
 	public String processInlineFields(String str)
 	{
-		for (Map.Entry<String, Field> e : this.fieldManager.getStaticFields().entrySet())
+		for (Map.Entry<String, Field> e : this.fieldManager.getInlinableFields().entrySet())
 		{
 			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
 		}
