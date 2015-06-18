@@ -34,7 +34,7 @@ public class HyperChatEventPoster
 	 */
 	public void chatAs(User spoke, String said)
 	{
-		hyperChat.processInlineFields(said); //replace fields they may have typed in here
+		hyperChat.processInlineFields(said, spoke); //replace fields they may have typed in here
 
 		Collection<Player> players = hyperChat.getPlayers();
 
