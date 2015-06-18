@@ -1,6 +1,6 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
-import com.hyperfresh.mchyperchat.HyperChatEventPoster;
+import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -13,10 +13,12 @@ import org.bukkit.event.server.ServerCommandEvent;
 public class BukkitListener implements Listener
 {
 	private BukkitPlugin plugin;
+	private HyperChat hyperChat;
 
-	public BukkitListener(BukkitPlugin plugin)
+	public BukkitListener(HyperChat hyperChat, BukkitPlugin plugin)
 	{
 		this.plugin = plugin;
+		this.hyperChat = hyperChat;
 	}
 
 	@EventHandler
@@ -38,7 +40,7 @@ public class BukkitListener implements Listener
 
 		Player player = plugin.getPlayer(event.getPlayer());
 
-		HyperChatEventPoster.onPlayerChat(player, event.getMessage());
+		hyperChat.getEventPoster().onPlayerChat(player, event.getMessage());
 	}
 
 	@EventHandler
@@ -52,7 +54,7 @@ public class BukkitListener implements Listener
 				event.setCommand("");
 
 				//remove the "say " part of the command
-				HyperChatEventPoster.onConsoleChat(event.getCommand().substring(4));
+				hyperChat.getEventPoster().onConsoleChat(event.getCommand().substring(4));
 			}
 		}
 	}
