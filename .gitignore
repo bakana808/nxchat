@@ -3,10 +3,15 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+.gradle/
+build/
+
 # IDEA ignore
 target/
 .idea/
 *.iml
+*.ipr
+*.iws
 
 # Package Files #
 *.jar

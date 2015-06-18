@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'org.hyperfresh.mc-hyperchat'
+version = '0.2.13-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+
+	// Repository for Bukkit
+	maven { url "https://hub.spigotmc.org/nexus/content/groups/public/" }
+}
+
+dependencies {
+	// Bukkit API
+	compile 'org.bukkit:bukkit:1.8-R0.1-SNAPSHOT'
+
+	// JUnit (Unit Tests)
+	testCompile 'junit:junit:4.8.1'
+}
