@@ -32,7 +32,7 @@ public class HyperChatEventPoster
 	 * @param spoke
 	 * @param said
 	 */
-	public void onPlayerChat(Player spoke, String said)
+	public void chatAs(User spoke, String said)
 	{
 		hyperChat.processInlineFields(said); //replace fields they may have typed in here
 
@@ -95,16 +95,5 @@ public class HyperChatEventPoster
 
 		lastSpoke = spoke;
 		lastSpokeTime = currentTime;
-	}
-
-	/**
-	 * Executes only when a console has run the "say" command.
-	 * Everything <b>after</b> "say" should be included in the {@code said} argument.
-	 *
-	 * @param said what the console said.
-	 */
-	public void onConsoleChat(String said)
-	{
-		hyperChat.getConsole().setLastSaid(said);
 	}
 }
