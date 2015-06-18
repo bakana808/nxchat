@@ -28,7 +28,7 @@ public class HyperChatEventPoster
 	{
 		Collection<Player> players = hyperChat.getPlayers();
 
-		spoke.setLastMessage(said);
+		spoke.setLastSaid(said);
 
 		if(spoke != lastSpoke)
 		{
@@ -85,6 +85,6 @@ public class HyperChatEventPoster
 	 */
 	public void onConsoleChat(String said)
 	{
-		hyperChat.getConsole().setLastMessage(said);
+		hyperChat.getConsole().setLastSaid(said);
 	}
 }

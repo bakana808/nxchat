@@ -14,7 +14,7 @@ public interface User
 	 *
 	 * @return the last message this user has sent
 	 */
-	public String getLastMessage();
+	public String getLastSaid();
 
 	/**
 	 * Sets the last message that this user has sent.
@@ -25,7 +25,7 @@ public interface User
 	 * @param said the last message this user has sent
 	 * @see HyperChatEventPoster
 	 */
-	public void setLastMessage(String said);
+	public void setLastSaid(String said);
 
 	/**
 	 * Sends a message to the User.

@@ -28,13 +28,13 @@ public class BukkitConsole implements User
 	}
 
 	@Override
-	public String getLastMessage()
+	public String getLastSaid()
 	{
 		return lastSaid;
 	}
 
 	@Override
-	public void setLastMessage(String said)
+	public void setLastSaid(String said)
 	{
 		lastSaid = said;
 	}

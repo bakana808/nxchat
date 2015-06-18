@@ -30,7 +30,7 @@ public class DefaultFields
 		@Override
 		public String getFieldValue(User sender, String... args)
 		{
-			return sender.getLastMessage();
+			return sender.getLastSaid();
 		}
 	}
 }
