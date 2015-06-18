@@ -57,19 +57,19 @@ public class ThemeManager
 		@Override
 		public String getAuthor()
 		{
-			return "octopod";
+			return "Mojang";
 		}
 
 		@Override
 		public String getChatHeaderFormat()
 		{
-			return "<${name}>";
+			return "";
 		}
 
 		@Override
 		public String getChatMessageFormat()
 		{
-			return "    ${message}";
+			return "<${name}> ${message}";
 		}
 
 		@Override
