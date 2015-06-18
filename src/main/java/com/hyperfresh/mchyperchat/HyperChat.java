@@ -24,6 +24,16 @@ public class HyperChat
 	private final ThemeManager themeManager = new ThemeManager();
 
 	/**
+	 * Gets the current instance of HyperChat
+	 *
+	 * @return the current instance of HyperChat.
+	 */
+	public static HyperChat getInstance()
+	{
+		return instance;
+	}
+
+	/**
 	 * This will run when this plugin is enabled.
 	 */
 	public void onEnable(HyperChatPlugin plugin)
