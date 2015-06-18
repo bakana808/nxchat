@@ -29,15 +29,19 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 
 	private BukkitListener listener = new BukkitListener(this);
 
+	private HyperChat hyperChat;
+
 	@Override
 	public void onEnable()
 	{
-		HyperChat.onEnable(this);
+		hyperChat = HyperChat.getInstance();
 
-		this.console = new BukkitConsole(Bukkit.getConsoleSender(), null);
+		hyperChat.onEnable(this);
+
+		this.console = new BukkitConsole(hyperChat, Bukkit.getConsoleSender());
 
 		Bukkit.getOnlinePlayers().stream().forEach(
-			player -> userCache.put(player.getUniqueId(), new BukkitUser(player, null))
+			player -> userCache.put(player.getUniqueId(), new BukkitUser(hyperChat, player))
 		);
 
 		Bukkit.getPluginManager().registerEvents(listener, this);
@@ -46,7 +50,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	@Override
 	public void onDisable()
 	{
-		HyperChat.onDisable();
+		hyperChat.onDisable();
 
 		userCache.clear();
 	}
