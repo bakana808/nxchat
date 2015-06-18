@@ -42,7 +42,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		this.console = new BukkitConsole(hyperChat, Bukkit.getConsoleSender());
 
 		Bukkit.getOnlinePlayers().stream().forEach(
-			player -> userCache.put(player.getUniqueId(), new BukkitUser(hyperChat, player))
+			player -> userCache.put(player.getUniqueId(), new BukkitPlayer(hyperChat, player))
 		);
 
 		Bukkit.getPluginManager().registerEvents(listener, this);
@@ -73,12 +73,12 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 
 	public Player getPlayer(org.bukkit.entity.Player player)
 	{
-		return userCache.computeIfAbsent(player.getUniqueId(), id -> new BukkitUser(hyperChat, player));
+		return userCache.computeIfAbsent(player.getUniqueId(), id -> new BukkitPlayer(hyperChat, player));
 	}
 
 	public void addPlayer(org.bukkit.entity.Player player)
 	{
-		userCache.put(player.getUniqueId(), new BukkitUser(hyperChat, player));
+		userCache.put(player.getUniqueId(), new BukkitPlayer(hyperChat, player));
 	}
 
 	public void removePlayer(org.bukkit.entity.Player player)

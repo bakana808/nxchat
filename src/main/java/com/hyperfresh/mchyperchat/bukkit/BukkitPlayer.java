@@ -9,14 +9,14 @@ import java.util.UUID;
 /**
  * A wrapper for Bukkit players.
  */
-public class BukkitUser implements Player
+public class BukkitPlayer implements Player
 {
 	private final org.bukkit.entity.Player handle;
 
 	private Theme theme;
 	private String lastSaid = null;
 
-	public BukkitUser(HyperChat hyperChat, org.bukkit.entity.Player player)
+	public BukkitPlayer(HyperChat hyperChat, org.bukkit.entity.Player player)
 	{
 		this.handle = player;
 		this.theme = hyperChat.getThemeManager().getDefaultTheme();
