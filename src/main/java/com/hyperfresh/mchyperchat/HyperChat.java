@@ -96,6 +96,8 @@ public class HyperChat
 		this.fieldManager.clear();
 	}
 
+	private static final String FIELD_REGEX_L = "(?i)\\$\\{", FIELD_REGEX_R = "\\}";
+
 	/**
 	 * Replaces all dynamic fields in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
@@ -108,7 +110,7 @@ public class HyperChat
 	{
 		for (Map.Entry<String, Field> e : this.fieldManager.getDynamicFields().entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(user));
+			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
 		}
 
 		return str;
@@ -125,7 +127,7 @@ public class HyperChat
 	{
 		for (Map.Entry<String, Field> e : this.fieldManager.getStaticFields().entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
+			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(null));
 		}
 
 		return str;
@@ -138,11 +140,11 @@ public class HyperChat
 	 * @param str
 	 * @return
 	 */
-	public String processInlineFields(String str)
+	public String processInlineFields(String str, User user)
 	{
 		for (Map.Entry<String, Field> e : this.fieldManager.getInlinableFields().entrySet())
 		{
-			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
+			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
 		}
 
 		return str;
