@@ -14,6 +14,7 @@ deploy:
     provider: releases
     api_key:
         secure: Tv8gH7hGCj9KVHHYk74CcJGeF87bDo5hB4eBFiqxfLTzQPXrupZCjb/A1aZou25jd4FoHsFKlSCbwNJ9Vh/5WbuSr9xVDk7TPHmELr07F8NCY2nFgT7KP/wV0u5k8LECpRSmQ5Irc9tWe8YzL/oTRL4GXTxFOybAGX34KHZqqDI=
+    file_glob: true
     file: "build/libs/HyperChat*.jar"
     on:
         tags: true
