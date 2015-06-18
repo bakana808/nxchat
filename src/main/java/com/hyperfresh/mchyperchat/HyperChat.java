@@ -130,4 +130,21 @@ public class HyperChat
 
 		return str;
 	}
+
+	/**
+	 * Replaces all inlinable fields in a string with their values.
+	 * Fields are detected by the pattern <code>"${<field name>}"</code>
+	 *
+	 * @param str
+	 * @return
+	 */
+	public String processInlineFields(String str)
+	{
+		for (Map.Entry<String, Field> e : this.fieldManager.getStaticFields().entrySet())
+		{
+			str = str.replaceAll("(?i)\\$\\{" + e.getKey() + "\\}(?-i)", e.getValue().getFieldValue(null));
+		}
+
+		return str;
+	}
 }

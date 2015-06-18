@@ -139,6 +139,24 @@ public class FieldManager
 		return dynamicFields;
 	}
 
+	public Map<String, Field> getInlinableFields()
+	{
+		Map<String, Field> dynamicFields = new HashMap<>();
+
+		fields.entrySet().forEach
+			(
+				e ->
+				{
+					if(e.getValue().canInline())
+					{
+						dynamicFields.put(e.getKey(), e.getValue());
+					}
+				}
+			);
+
+		return dynamicFields;
+	}
+
 	/**
 	 * Clears the entire list of field.
 	 */
