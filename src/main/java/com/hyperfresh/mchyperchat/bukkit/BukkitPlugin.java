@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * The entry class for the Bukkit plugin.
@@ -66,9 +67,15 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	}
 
 	@Override
-	public Collection<Player> getPlayers()
+	public Collection<User> getUsers()
 	{
-		return userCache.values();
+		Collection<User> users = userCache.values().stream()
+			.map(player -> (User)player)
+			.collect(Collectors.toList());
+
+		users.add(console);
+
+		return users;
 	}
 
 	public Player getPlayer(org.bukkit.entity.Player player)
@@ -84,11 +91,5 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	public void removePlayer(org.bukkit.entity.Player player)
 	{
 		userCache.remove(player.getUniqueId());
-	}
-
-	@Override
-	public User getConsole()
-	{
-		return console;
 	}
 }
