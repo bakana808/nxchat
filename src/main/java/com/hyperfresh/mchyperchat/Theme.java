@@ -23,24 +23,5 @@ public interface Theme
 	 */
 	public String getAuthor();
 
-	/**
-	 * Returns the format that is used in a chat header.
-	 *
-	 * @return
-	 */
-	public String getChatHeaderFormat();
-
-	/**
-	 * Returns the format that is used in a chat message.
-	 *
-	 * @return
-	 */
-	public String getChatMessageFormat();
-
-	/**
-	 * Returns the format that is used in a chat footer.
-	 *
-	 * @return
-	 */
-	public String getChatFooterFormat();
+	public String getElement(ThemeElement element);
 }
