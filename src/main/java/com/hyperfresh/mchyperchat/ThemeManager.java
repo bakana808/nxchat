@@ -42,6 +42,13 @@ public class ThemeManager
 
 	public static class VanillaTheme implements Theme
 	{
+		private Map<ThemeElement, String> elements = new HashMap<>();
+
+		protected VanillaTheme()
+		{
+			elements.put(ThemeElement.CHAT_MESSAGE_FORMAT, "<${name}> ${message}");
+		}
+
 		@Override
 		public String getID()
 		{
@@ -61,21 +68,9 @@ public class ThemeManager
 		}
 
 		@Override
-		public String getChatHeaderFormat()
+		public String getElement(ThemeElement element)
 		{
-			return "";
-		}
-
-		@Override
-		public String getChatMessageFormat()
-		{
-			return "<${name}> ${message}";
-		}
-
-		@Override
-		public String getChatFooterFormat()
-		{
-			return null;
+			return elements.get(element);
 		}
 	}
 }
