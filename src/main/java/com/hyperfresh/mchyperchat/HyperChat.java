@@ -57,14 +57,9 @@ public class HyperChat
 	 *
 	 * @return the current console
 	 */
-	public User getConsole()
+	public HyperChatPlugin getPlugin()
 	{
-		return this.plugin.getConsole();
-	}
-
-	public Collection<Player> getPlayers()
-	{
-		return this.plugin.getPlayers();
+		return this.plugin;
 	}
 
 	public ThemeManager getThemeManager()
