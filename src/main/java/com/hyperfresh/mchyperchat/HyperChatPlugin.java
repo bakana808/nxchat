@@ -16,16 +16,9 @@ public interface HyperChatPlugin
 	public Player getPlayer(UUID id);
 
 	/**
-	 * Gets all Players on the server.
+	 * Gets all Users on the server, which includes both all online players and the console.
 	 *
 	 * @return a set of Players on the server
 	 */
-	public Collection<Player> getPlayers();
-
-	/**
-	 * Gets the console of the server.
-	 *
-	 * @return the console
-	 */
-	public User getConsole();
+	public Collection<User> getUsers();
 }
