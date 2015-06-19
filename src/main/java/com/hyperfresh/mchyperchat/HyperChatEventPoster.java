@@ -26,6 +26,21 @@ public class HyperChatEventPoster
 	private long lastSpokeTime = 0L;  // the last time a player spoke
 	private long lastHeaderTime = 0L; // the last time a header was printed
 
+	private void printElementAs(ThemeElement element, User as, Collection<User> users)
+	{
+		users.stream().forEach
+		(
+			user ->
+			{
+				String format = user.getTheme().getElement(element);
+				if(format != null)
+				{
+					user.sendMessage(hyperChat.processDynamicFields(format, as));
+				}
+			}
+		);
+	}
+
 	/**
 	 * Executes when a player has said something.
 	 *
@@ -34,9 +49,9 @@ public class HyperChatEventPoster
 	 */
 	public void chatAs(User spoke, String said)
 	{
-		hyperChat.processInlineFields(said, spoke); //replace fields they may have typed in here
+		said = hyperChat.processInlineFields(said, spoke); //replace fields they may have typed in here
 
-		Collection<Player> players = hyperChat.getPlayers();
+		Collection<User> users = hyperChat.getPlugin().getUsers();
 
 		spoke.setLastSaid(said);
 
@@ -51,47 +66,16 @@ public class HyperChatEventPoster
 			//print the last player's footer
 			if(lastSpoke != null)
 			{
-				players.stream().forEach
-				(
-					p ->
-					{
-						String footerFormat = p.getTheme().getChatFooterFormat();
-						if(footerFormat != null)
-						{
-							p.sendMessage(hyperChat.processDynamicFields(footerFormat, lastSpoke));
-						}
-					}
-				);
+				printElementAs(ThemeElement.CHAT_FOOTER_FORMAT, lastSpoke, users);
 			}
 
 			//print this player's header
-			players.stream().forEach
-			(
-				p ->
-				{
-					String headerFormat = spoke.getTheme().getChatHeaderFormat();
-					if(headerFormat != null)
-					{
-						p.sendMessage(hyperChat.processDynamicFields(headerFormat, spoke));
-					}
-				}
-			);
-
+			printElementAs(ThemeElement.CHAT_HEADER_FORMAT, spoke, users);
 			lastHeaderTime = currentTime;
 		}
 
 		//print this player's message
-		players.stream().forEach
-		(
-			p ->
-			{
-				String messageFormat = spoke.getTheme().getChatMessageFormat();
-				if(messageFormat != null)
-				{
-					p.sendMessage(hyperChat.processDynamicFields(messageFormat, spoke));
-				}
-			}
-		);
+		printElementAs(ThemeElement.CHAT_MESSAGE_FORMAT, spoke, users);
 
 		lastSpoke = spoke;
 		lastSpokeTime = currentTime;
