@@ -26,7 +26,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	/**
 	 * Bukkit's console object.
 	 */
-	private User console;
+	private BukkitConsole console;
 
 	private BukkitListener listener;
 
@@ -76,6 +76,11 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		users.add(console);
 
 		return users;
+	}
+
+	public BukkitConsole getConsole()
+	{
+		return console;
 	}
 
 	public Player getPlayer(org.bukkit.entity.Player player)
