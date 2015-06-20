@@ -22,13 +22,7 @@ public class FieldTests
 		}
 
 		@Override
-		public Collection<Player> getPlayers()
-		{
-			return null;
-		}
-
-		@Override
-		public User getConsole()
+		public Collection<User> getUsers()
 		{
 			return null;
 		}
@@ -53,8 +47,8 @@ public class FieldTests
 	@Test
 	public void FieldProcessTest()
 	{
-		String str = hyperChat.processStaticFields("${c} ${C} $c");
+		String str = hyperChat.processStaticFields("$c ${c} ${C}");
 
-		Assert.assertEquals("Red Red $c", str);
+		Assert.assertEquals("$c Red Red", str);
 	}
 }
