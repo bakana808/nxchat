@@ -37,7 +37,7 @@ public class HyperChat
 	/**
 	 * This will run when this plugin is enabled.
 	 */
-	public void onEnable(HyperChatPlugin plugin)
+	public void setPlugin(HyperChatPlugin plugin)
 	{
 		this.plugin = plugin;
 		//READ "field" FOLDER HERE

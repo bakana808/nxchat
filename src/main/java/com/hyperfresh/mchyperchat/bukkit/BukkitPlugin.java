@@ -38,7 +38,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		hyperChat = HyperChat.getInstance();
 		listener = new BukkitListener(hyperChat, this);
 
-		hyperChat.onEnable(this);
+		hyperChat.setPlugin(this);
 
 		this.console = new BukkitConsole(hyperChat, Bukkit.getConsoleSender());
 
@@ -70,7 +70,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 	public Collection<User> getUsers()
 	{
 		Collection<User> users = userCache.values().stream()
-			.map(player -> (User)player)
+			.map(player -> (User) player)
 			.collect(Collectors.toList());
 
 		users.add(console);

@@ -40,7 +40,7 @@ public class FieldTests
 	{
 		hyperChat = HyperChat.getInstance();
 
-		hyperChat.onEnable(new BlankPlugin());
+		hyperChat.setPlugin(new BlankPlugin());
 
 		FieldManager fields = hyperChat.getFieldManager();
 
