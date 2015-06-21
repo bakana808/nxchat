@@ -2,6 +2,9 @@ package com.hyperfresh.mchyperchat.field;
 
 import com.hyperfresh.mchyperchat.User;
 
+import java.util.Collections;
+import java.util.Set;
+
 /**
  * @author octopod
  */
@@ -15,34 +18,12 @@ public interface Field
 	public String[] getFieldNames();
 
 	/**
-	 * Returns true if this field can potentially return different values every time it is used.
-	 *
-	 * <p>
-	 *     Static fields will be processed into a theme's formats when it is registered,
-	 *     whereas dynamic fields will be processed into messages every time a player chats.
-	 * </p>
-	 *
-	 * <p>
-	 *     If your Field returns the same value every time it is used, it is recommended that
-	 *     you return {@code false} for this method or consider using {@code ConstantField} instead.
-	 * </p>
-	 *
-	 * @return true if this field is dynamic
+	 * Returns true if this field contains a certain FieldFlag.
+	 * @return
 	 */
-	public default boolean isDynamic()
+	public default Set<FieldFlag> getFlags()
 	{
-		return true;
-	}
-
-	/**
-	 * Returns true if a player can type in this field in his/her message.
-	 * Inlined fields, regardless of them being dynamic or not, will be processed when they chat.
-	 *
-	 * @return true if this field can be inlined
-	 */
-	public default boolean canInline()
-	{
-		return false;
+		return Collections.emptySet();
 	}
 
 	/**
