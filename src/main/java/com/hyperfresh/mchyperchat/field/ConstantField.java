@@ -2,6 +2,9 @@ package com.hyperfresh.mchyperchat.field;
 
 import com.hyperfresh.mchyperchat.User;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 /**
  * Represents a field that returns a constant value.
  *
@@ -28,9 +31,9 @@ class ConstantField implements Field
 	}
 
 	@Override
-	public boolean isDynamic()
+	public Set<FieldFlag> getFlags()
 	{
-		return false;
+		return EnumSet.of(FieldFlag.CONSTANT);
 	}
 
 	@Override
