@@ -1,7 +1,9 @@
 package com.hyperfresh.mchyperchat.field;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class FieldManager
 {
@@ -103,58 +105,49 @@ public class FieldManager
 		return fields.containsKey(key);
 	}
 
-	public Map<String, Field> getStaticFields()
+	public Map<String, Field> getFields()
 	{
-		Map<String, Field> staticFields = new HashMap<>();
+		return new HashMap<>(fields);
+	}
+
+	public Map<String, Field> getFieldsByWhitelist(Set<FieldFlag> whitelist)
+	{
+		Map<String, Field> filteredFields = new HashMap<>();
 
 		fields.entrySet().forEach
 		(
 			e ->
 			{
-				if(!e.getValue().isDynamic())
+				String ID = e.getKey();
+				Field field = e.getValue();
+				if(field.getFlags().containsAll(whitelist))
 				{
-					staticFields.put(e.getKey(), e.getValue());
+					filteredFields.put(ID, field);
 				}
 			}
 		);
 
-		return staticFields;
+		return filteredFields;
 	}
 
-	public Map<String, Field> getDynamicFields()
+	public Map<String, Field> getFieldsByBlacklist(Set<FieldFlag> blacklist)
 	{
-		Map<String, Field> dynamicFields = new HashMap<>();
+		Map<String, Field> filteredFields = new HashMap<>();
 
 		fields.entrySet().forEach
 			(
 				e ->
 				{
-					if(e.getValue().isDynamic())
+					String ID = e.getKey();
+					Field field = e.getValue();
+					if(!Collections.disjoint(field.getFlags(), blacklist))
 					{
-						dynamicFields.put(e.getKey(), e.getValue());
+						filteredFields.put(ID, field);
 					}
 				}
 			);
 
-		return dynamicFields;
-	}
-
-	public Map<String, Field> getInlinableFields()
-	{
-		Map<String, Field> dynamicFields = new HashMap<>();
-
-		fields.entrySet().forEach
-			(
-				e ->
-				{
-					if(e.getValue().canInline())
-					{
-						dynamicFields.put(e.getKey(), e.getValue());
-					}
-				}
-			);
-
-		return dynamicFields;
+		return filteredFields;
 	}
 
 	/**
