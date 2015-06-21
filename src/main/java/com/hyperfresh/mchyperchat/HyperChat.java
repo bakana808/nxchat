@@ -1,10 +1,12 @@
 package com.hyperfresh.mchyperchat;
 
 import com.hyperfresh.mchyperchat.field.Field;
+import com.hyperfresh.mchyperchat.field.FieldFlag;
 import com.hyperfresh.mchyperchat.field.FieldManager;
 
-import java.util.Collection;
+import java.util.EnumSet;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 public class HyperChat
 {
@@ -93,6 +95,18 @@ public class HyperChat
 
 	private static final String FIELD_REGEX_L = "(?i)\\$\\{", FIELD_REGEX_R = "\\}";
 
+	private static String processFields(Map<String, Field> fields, String str, User user)
+	{
+		str = Matcher.quoteReplacement(str);
+
+		for (Map.Entry<String, Field> e : fields.entrySet())
+		{
+			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
+		}
+
+		return str;
+	}
+
 	/**
 	 * Replaces all dynamic fields in a string with their values.
 	 * Fields are detected by the pattern <code>"${<field name>}"</code>
@@ -103,12 +117,7 @@ public class HyperChat
 	 */
 	public String processDynamicFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : this.fieldManager.getDynamicFields().entrySet())
-		{
-			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
-		}
-
-		return str;
+		return processFields(fieldManager.getFieldsByBlacklist(EnumSet.of(FieldFlag.CONSTANT)), str, user);
 	}
 
 	/**
@@ -118,14 +127,9 @@ public class HyperChat
 	 * @param str
 	 * @return
 	 */
-	public String processStaticFields(String str)
+	public String processStaticFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : this.fieldManager.getStaticFields().entrySet())
-		{
-			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(null));
-		}
-
-		return str;
+		return processFields(fieldManager.getFieldsByWhitelist(EnumSet.of(FieldFlag.CONSTANT)), str, user);
 	}
 
 	/**
@@ -137,11 +141,8 @@ public class HyperChat
 	 */
 	public String processInlineFields(String str, User user)
 	{
-		for (Map.Entry<String, Field> e : this.fieldManager.getInlinableFields().entrySet())
-		{
-			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
-		}
-
-		return str;
+		return processFields(fieldManager.getFieldsByWhitelist(EnumSet.of(FieldFlag.INLINEABLE)), str, user);
 	}
+
+
 }
