@@ -1,6 +1,7 @@
 package com.hyperfresh.mchyperchat;
 
 import java.util.Collection;
+import java.util.regex.Matcher;
 
 /**
  * Event entry methods for HyperChat.
@@ -49,6 +50,8 @@ public class HyperChatEventPoster
 	 */
 	public void chatAs(User spoke, String said)
 	{
+		said = Matcher.quoteReplacement(said);
+
 		said = hyperChat.processInlineFields(said, spoke); //replace fields they may have typed in here
 
 		Collection<User> users = hyperChat.getPlugin().getUsers();
