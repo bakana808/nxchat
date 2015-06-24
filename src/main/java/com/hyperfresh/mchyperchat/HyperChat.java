@@ -97,8 +97,6 @@ public class HyperChat
 
 	private static String processFields(Map<String, Field> fields, String str, User user)
 	{
-		str = Matcher.quoteReplacement(str);
-
 		for (Map.Entry<String, Field> e : fields.entrySet())
 		{
 			str = str.replaceAll(FIELD_REGEX_L + e.getKey() + FIELD_REGEX_R, e.getValue().getFieldValue(user));
@@ -117,7 +115,7 @@ public class HyperChat
 	 */
 	public String processDynamicFields(String str, User user)
 	{
-		return processFields(fieldManager.getFieldsByBlacklist(EnumSet.of(FieldFlag.CONSTANT)), str, user);
+		return processFields(fieldManager.getFields(EnumSet.of(FieldFlag.CONSTANT), true), str, user);
 	}
 
 	/**
@@ -127,9 +125,9 @@ public class HyperChat
 	 * @param str
 	 * @return
 	 */
-	public String processStaticFields(String str, User user)
+	public String processStaticFields(String str)
 	{
-		return processFields(fieldManager.getFieldsByWhitelist(EnumSet.of(FieldFlag.CONSTANT)), str, user);
+		return processFields(fieldManager.getFields(EnumSet.of(FieldFlag.CONSTANT)), str, null);
 	}
 
 	/**
@@ -141,7 +139,7 @@ public class HyperChat
 	 */
 	public String processInlineFields(String str, User user)
 	{
-		return processFields(fieldManager.getFieldsByWhitelist(EnumSet.of(FieldFlag.INLINEABLE)), str, user);
+		return processFields(fieldManager.getFields(EnumSet.of(FieldFlag.INLINEABLE)), str, user);
 	}
 
 

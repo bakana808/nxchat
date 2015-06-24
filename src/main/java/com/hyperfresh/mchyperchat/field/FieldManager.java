@@ -110,7 +110,12 @@ public class FieldManager
 		return new HashMap<>(fields);
 	}
 
-	public Map<String, Field> getFieldsByWhitelist(Set<FieldFlag> whitelist)
+	public Map<String, Field> getFields(Set<FieldFlag> flags)
+	{
+		return getFields(flags, false);
+	}
+
+	public Map<String, Field> getFields(Set<FieldFlag> flags, boolean blacklist)
 	{
 		Map<String, Field> filteredFields = new HashMap<>();
 
@@ -120,32 +125,15 @@ public class FieldManager
 			{
 				String ID = e.getKey();
 				Field field = e.getValue();
-				if(field.getFlags().containsAll(whitelist))
+				if(
+					(!blacklist && !Collections.disjoint(field.getFlags(), flags)) ||
+					(blacklist && Collections.disjoint(field.getFlags(), flags))
+				)
 				{
 					filteredFields.put(ID, field);
 				}
 			}
 		);
-
-		return filteredFields;
-	}
-
-	public Map<String, Field> getFieldsByBlacklist(Set<FieldFlag> blacklist)
-	{
-		Map<String, Field> filteredFields = new HashMap<>();
-
-		fields.entrySet().forEach
-			(
-				e ->
-				{
-					String ID = e.getKey();
-					Field field = e.getValue();
-					if(!Collections.disjoint(field.getFlags(), blacklist))
-					{
-						filteredFields.put(ID, field);
-					}
-				}
-			);
 
 		return filteredFields;
 	}
