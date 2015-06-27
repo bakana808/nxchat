@@ -34,6 +34,13 @@ public interface User
 	 */
 	public void sendMessage(String message);
 
+	/**
+	 * Returns if this user has the specified permission.
+	 *
+	 * @param permission the permission node
+	 */
+	public void hasPermission(String permission);
+
 	public Theme getTheme();
 
 	public void setTheme(Theme theme);
