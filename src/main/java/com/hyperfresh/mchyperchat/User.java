@@ -39,7 +39,7 @@ public interface User
 	 *
 	 * @param permission the permission node
 	 */
-	public void hasPermission(String permission);
+	public boolean hasPermission(String permission);
 
 	public Theme getTheme();
 
