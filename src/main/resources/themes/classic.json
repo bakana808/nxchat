@@ -1,4 +1,0 @@
-{
-	"name":  "classic",
-	"player-body": "<${NAME}> ${MESSAGE}"
-}
