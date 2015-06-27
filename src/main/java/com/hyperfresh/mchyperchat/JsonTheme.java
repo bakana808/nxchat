@@ -1,0 +1,48 @@
+package com.hyperfresh.mchyperchat;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+public class JsonTheme implements Theme
+{
+	public static final String NAME_KEY = "name";
+	public static final String HEADER_KEY = "header";
+	public static final String MESSAGE_KEY = "message";
+	public static final String FOOTER_KEY = "footer";
+
+	Map<ThemeElement, String> elements = new EnumMap<>(ThemeElement.class);
+	String name;
+
+	public JsonTheme(String name, String header, String message, String footer)
+	{
+		this.name = name;
+
+		elements.put(ThemeElement.CHAT_HEADER_FORMAT, header);
+		elements.put(ThemeElement.CHAT_MESSAGE_FORMAT, message);
+		elements.put(ThemeElement.CHAT_FOOTER_FORMAT, footer);
+	}
+
+	@Override
+	public String getID()
+	{
+		return null;
+	}
+
+	@Override
+	public String getName()
+	{
+		return name;
+	}
+
+	@Override
+	public String getAuthor()
+	{
+		return null;
+	}
+
+	@Override
+	public String getElement(ThemeElement element)
+	{
+		return elements.get(element);
+	}
+}
