@@ -13,13 +13,13 @@ public class JsonTheme implements Theme
 	Map<ThemeElement, String> elements = new EnumMap<>(ThemeElement.class);
 	String name;
 
-	public JsonTheme(String name, String header, String message, String footer)
+	public JsonTheme(HyperChat hyperChat, String name, String header, String message, String footer)
 	{
-		this.name = name;
+		this.name = hyperChat.preprocessThemeFormat(name);
 
-		elements.put(ThemeElement.CHAT_HEADER_FORMAT, header);
-		elements.put(ThemeElement.CHAT_MESSAGE_FORMAT, message);
-		elements.put(ThemeElement.CHAT_FOOTER_FORMAT, footer);
+		elements.put(ThemeElement.CHAT_HEADER_FORMAT, 	hyperChat.preprocessThemeFormat(header));
+		elements.put(ThemeElement.CHAT_MESSAGE_FORMAT, 	hyperChat.preprocessThemeFormat(message));
+		elements.put(ThemeElement.CHAT_FOOTER_FORMAT, 	hyperChat.preprocessThemeFormat(footer));
 	}
 
 	@Override
