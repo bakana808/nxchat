@@ -52,6 +52,12 @@ public class BukkitPlayer implements Player
 	}
 
 	@Override
+	public boolean hasPermission(String permission)
+	{
+		return handle.hasPermission(permission);
+	}
+
+	@Override
 	public Theme getTheme()
 	{
 		return theme;
