@@ -1,16 +1,28 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
-import com.hyperfresh.mchyperchat.HyperChat;
-import com.hyperfresh.mchyperchat.HyperChatPlugin;
-import com.hyperfresh.mchyperchat.Player;
-import com.hyperfresh.mchyperchat.User;
+import com.hyperfresh.mchyperchat.*;
+import com.hyperfresh.mchyperchat.theme.ThemeUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 /**
@@ -47,6 +59,39 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		);
 
 		Bukkit.getPluginManager().registerEvents(listener, this);
+
+		loadThemes();
+	}
+
+	private void loadThemes()
+	{
+		this.getLogger().log(Level.INFO, "Reading themes...");
+		File themeFolder = new File(this.getDataFolder(), "themes"); //load themes from "theme" folder
+
+		if(!themeFolder.exists())
+		{
+			try
+			{
+				ThemeUtils.copyDefaultThemes(getFile(), themeFolder);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try
+			{
+				Map<String, Theme> themes = ThemeUtils.readThemes(hyperChat, themeFolder);
+				hyperChat.getThemeManager().addAll(themes);
+				this.getLogger().log(Level.INFO, themes.size() + " themes added: " + StringUtils.join(themes.keySet(), ", "));
+			}
+			catch (IOException | ParseException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
