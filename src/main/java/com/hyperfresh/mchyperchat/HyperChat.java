@@ -1,8 +1,10 @@
 package com.hyperfresh.mchyperchat;
 
+import com.hyperfresh.mchyperchat.command.CommandManager;
 import com.hyperfresh.mchyperchat.field.Field;
 import com.hyperfresh.mchyperchat.field.FieldFlag;
 import com.hyperfresh.mchyperchat.field.FieldManager;
+import org.bukkit.ChatColor;
 
 import java.util.EnumSet;
 import java.util.Map;
@@ -24,6 +26,8 @@ public class HyperChat
 
 	private final FieldManager fieldManager = new FieldManager();
 	private final ThemeManager themeManager = new ThemeManager();
+	private final CommandManager commandManager = new CommandManager(this);
+
 	private final HyperChatEventPoster eventPoster = new HyperChatEventPoster(this);
 
 	/**
@@ -79,6 +83,11 @@ public class HyperChat
 		return this.fieldManager;
 	}
 
+	public CommandManager getCommandManager()
+	{
+		return this.commandManager;
+	}
+
 	public HyperChatEventPoster getEventPoster()
 	{
 		return this.eventPoster;
@@ -94,6 +103,35 @@ public class HyperChat
 	}
 
 	private static final String FIELD_REGEX_L = "(?i)\\$\\{", FIELD_REGEX_R = "\\}";
+
+	/**
+	 * Converts & codes into section signs in order for Minecraft to display colored text.
+	 *
+	 * @param string
+	 * @return
+	 */
+	public String colorize(String string)
+	{
+		if(string == null) return null;
+
+		//TODO: use our own implementation of ChatColor
+		return ChatColor.translateAlternateColorCodes('&', string);
+	}
+
+	/**
+	 * Preprocesses formats read from themes, which is a combination of {@code colorize()}
+	 * and {@code processStaticFields()}.
+	 *
+	 * @param string
+	 * @return
+	 */
+	public String preprocessThemeFormat(String string)
+	{
+		if(string == null) return null;
+		string = colorize(string);
+		string = processStaticFields(string);
+		return string;
+	}
 
 	private static String processFields(Map<String, Field> fields, String str, User user)
 	{
