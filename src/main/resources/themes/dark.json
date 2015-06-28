@@ -1,4 +1,4 @@
 {
     "name": "Dark",
-    "body": "&8[&7${name}&8] &7${message}"
+    "message": "&8[&7${name}&8] &7${message}"
 }

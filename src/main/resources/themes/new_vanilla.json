@@ -1,5 +1,5 @@
 {
 	"name":  "classic-twoline",
 	"header": "<${NAME}>",
-	"body": "    ${MESSAGE}"
+	"message": "    ${MESSAGE}"
 }
