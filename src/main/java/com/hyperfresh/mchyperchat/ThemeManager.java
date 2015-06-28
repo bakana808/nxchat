@@ -16,13 +16,19 @@ public class ThemeManager
 
 	public ThemeManager()
 	{
-		add(defaultTheme);
+		add("vanilla", defaultTheme);
 	}
 
-	public void add(Theme theme)
+	public void add(String ID, Theme theme)
 	{
-		themes.put(theme.getID(), theme);
+		themes.put(ID, theme);
 		themesByClass.put(theme.getClass(), theme);
+	}
+
+	public void addAll(Map<String, Theme> themes)
+	{
+		this.themes.putAll(themes);
+		themes.values().stream().forEach(theme -> this.themesByClass.put(theme.getClass(), theme));
 	}
 
 	public Theme get(String id)
