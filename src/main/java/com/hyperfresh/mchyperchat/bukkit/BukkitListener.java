@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerCommandEvent;
@@ -59,6 +60,17 @@ public class BukkitListener implements Listener
 
 				hyperChat.getEventPoster().chatAs(plugin.getConsole(), said);
 			}
+		}
+	}
+
+	@EventHandler
+	public void onPreprocessCommand(PlayerCommandPreprocessEvent event)
+	{
+		Player player = plugin.getPlayer(event.getPlayer());
+		String[] split = event.getMessage().substring(1).split(" ");
+		if(hyperChat.getCommandManager().dispatchCommand(player, split))
+		{
+			event.setCancelled(true);
 		}
 	}
 }
