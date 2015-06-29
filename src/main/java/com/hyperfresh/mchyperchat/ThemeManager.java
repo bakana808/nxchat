@@ -36,6 +36,11 @@ public class ThemeManager
 		return themes.get(id);
 	}
 
+	public Map<String, Theme> getThemes()
+	{
+		return new HashMap<>(themes);
+	}
+
 	public Theme getDefaultTheme()
 	{
 		return defaultTheme;
