@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 
 import java.util.EnumSet;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 public class HyperChat
 {

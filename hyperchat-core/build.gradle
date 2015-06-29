@@ -1,0 +1,11 @@
+apply plugin: 'idea'
+
+dependencies {
+	// Apache Commons IO
+	compile 'org.apache.commons:commons-io:1.3.2'
+
+	// JUnit (Unit Tests)
+	testCompile 'junit:junit:4.8.1'
+}
+
+build.dependsOn(shadowJar)

@@ -1,1 +1,3 @@
 rootProject.name = 'hyperchat'
+
+include 'hyperchat-core', 'hyperchat-bukkit'

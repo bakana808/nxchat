@@ -1,0 +1,26 @@
+apply plugin: 'idea'
+
+dependencies {
+	compile project(':hyperchat-core')
+	// Bukkit API
+	compile 'org.bukkit:bukkit:1.8-R0.1-SNAPSHOT'
+}
+
+processResources {
+	from("src/main/resources") {
+		expand 'version': project.git_version
+		include 'plugin.yml'
+	}
+
+	from("src/main/resources") {
+		exclude 'plugin.yml'
+	}
+}
+
+shadowJar {
+	dependencies {
+		include(dependency(':hyperchat-core'))
+	}
+}
+
+build.dependsOn(shadowJar)
