@@ -57,7 +57,7 @@ public class CommandMethod
 		for(int i = 1; i < parameters.length; i++)
 		{
 			Parameter parameter = parameters[i];
-			Default def = parameter.getAnnotation(Default.class);
+			Optional def = parameter.getAnnotation(Optional.class);
 			if(def == null)
 			{
 				sb.append(" <").append(parameter.getName()).append(">");
@@ -85,14 +85,15 @@ public class CommandMethod
 		for(int i = 1; i < parameters.length; i++)
 		{
 			Parameter parameter = parameters[i];
-			Default def = parameter.getAnnotation(Default.class);
+			Optional def = parameter.getAnnotation(Optional.class);
 			try
 			{
 				if(i > (stringArgs.length))
 				{
 					if(def != null)
 					{
-						arguments[i] = convertArgument(def.value(), parameter.getType());
+						String value = def.value().length == 0 ? null : def.value()[0];
+						arguments[i] = convertArgument(value, parameter.getType());
 					}
 					else
 					{
