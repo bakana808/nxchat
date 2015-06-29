@@ -4,7 +4,6 @@ import com.hyperfresh.mchyperchat.command.CommandManager;
 import com.hyperfresh.mchyperchat.field.Field;
 import com.hyperfresh.mchyperchat.field.FieldFlag;
 import com.hyperfresh.mchyperchat.field.FieldManager;
-import org.bukkit.ChatColor;
 
 import java.util.EnumSet;
 import java.util.Map;
@@ -113,8 +112,7 @@ public class HyperChat
 	{
 		if(string == null) return null;
 
-		//TODO: use our own implementation of ChatColor
-		return ChatColor.translateAlternateColorCodes('&', string);
+		return Color.colorize(string);
 	}
 
 	/**
