@@ -3,15 +3,6 @@ import org.ajoberstar.grgit.*
 apply plugin: 'java'
 apply plugin: 'idea'
 
-def repo = Grgit.open(project.file("."))
-def head = repo.head()
-def tag = repo.tag.list().find{ it.commit == head}
-
-group = 'org.hyperfresh.mc-hyperchat'
-version = tag.getName()
-
-ext.git_version = version + "-" + head.getAbbreviatedId()
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -25,6 +16,43 @@ buildscript {
 		classpath 'org.ajoberstar:gradle-git:0.12.0'
 	}
 }
+
+def repo
+try {
+	repo = Grgit.open(project.file("."))
+} catch (Exception e) {
+	repo = null
+}
+
+if(!project.hasProperty("git_tag")) {
+	if(repo == null) {
+		ext.git_tag = "-1.0"
+	} else {
+		def tags = repo.tag.list()
+		def tag
+		try {
+			// find the tag that matches git repo head
+			tag = tags.find{it.commit = repo.head()}
+		} catch (Exception e) {
+			// get the last tag instead
+			tag = tags.getAt(tags.size() - 1)
+		}
+		ext.git_tag = tag.getName();
+	}
+}
+
+if(!project.hasProperty("git_hash")) {
+	if(repo == null) {
+		ext.git_hash = "unknown"
+	} else {
+		ext.git_hash = repo.head().abbreviatedId
+	}
+}
+
+group = 'org.hyperfresh.mc-hyperchat'
+version = git_tag
+
+ext.git_version = git_tag + "-" + git_hash
 
 repositories {
 	mavenCentral()
