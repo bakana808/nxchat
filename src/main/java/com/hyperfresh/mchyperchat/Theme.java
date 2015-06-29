@@ -3,13 +3,6 @@ package com.hyperfresh.mchyperchat;
 public interface Theme
 {
 	/**
-	 * Returns the ID of this theme.
-	 *
-	 * @return
-	 */
-	public String getID();
-
-	/**
 	 * Returns the name of this theme.
 	 *
 	 * @return

@@ -23,12 +23,6 @@ public class JsonTheme implements Theme
 	}
 
 	@Override
-	public String getID()
-	{
-		return null;
-	}
-
-	@Override
 	public String getName()
 	{
 		return name;

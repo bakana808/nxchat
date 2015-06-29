@@ -61,12 +61,6 @@ public class ThemeManager
 		}
 
 		@Override
-		public String getID()
-		{
-			return "vanilla";
-		}
-
-		@Override
 		public String getName()
 		{
 			return "Vanilla Classic";
