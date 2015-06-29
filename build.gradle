@@ -65,6 +65,10 @@ subprojects {
 		// Repository for Bukkit
 		maven { url "https://hub.spigotmc.org/nexus/content/groups/public/" }
 	}
+
+	shadowJar {
+		classifier ''
+	}
 }
 
 
