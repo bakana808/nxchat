@@ -1,15 +1,22 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.*;
-import com.hyperfresh.mchyperchat.theme.ThemeUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -60,7 +67,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		{
 			try
 			{
-				ThemeUtils.copyDefaultThemes(getFile(), themeFolder);
+				copyDefaultThemes(getFile(), themeFolder);
 			}
 			catch (IOException e)
 			{
@@ -71,7 +78,7 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 		{
 			try
 			{
-				Map<String, Theme> themes = ThemeUtils.readThemes(hyperChat, themeFolder);
+				Map<String, Theme> themes = readThemes(hyperChat, themeFolder);
 				hyperChat.getThemeManager().addAll(themes);
 				this.getLogger().log(Level.INFO, themes.size() + " themes added: " + StringUtils.join(themes.keySet(), ", "));
 			}
@@ -80,6 +87,69 @@ public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void copyDefaultThemes(File jar, File folder) throws IOException
+	{
+		JarFile file = new JarFile(jar);
+		folder.mkdirs();
+		file.stream().forEach
+		(
+		entry ->
+		{
+			if(entry.getName().startsWith("themes/") && entry.getName().endsWith(".json"))
+			{
+				File outputFile = new File(folder, FilenameUtils.getName(entry.getName()));
+				try
+				{
+					IOUtils.copy(file.getInputStream(entry), new FileOutputStream(outputFile));
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		);
+	}
+
+	private static Map<String, Theme> readThemes(HyperChat hyperChat, File folder) throws IOException, ParseException
+	{
+		Map<String, Theme> themes = new HashMap<>();
+
+		if(folder.exists())
+		{
+			JSONParser parser = new JSONParser();
+			for(File file: folder.listFiles())
+			{
+				String filename = file.getName();
+
+				if(FilenameUtils.getExtension(filename).equals("json"))
+				{
+					String themeId = FilenameUtils.getBaseName(filename);
+
+					Object obj = parser.parse(FileUtils.readFileToString(file));
+
+					if(obj instanceof JSONObject)
+					{
+						final JSONObject json = (JSONObject)obj;
+
+						String name = 		(String) json.get(JsonTheme.NAME_KEY);
+						String header = 	(String) json.get(JsonTheme.HEADER_KEY);
+						String message = 	(String) json.get(JsonTheme.MESSAGE_KEY);
+						String footer = 	(String) json.get(JsonTheme.FOOTER_KEY);
+
+						themes.put(themeId, new JsonTheme(hyperChat, name, header, message, footer));
+					}
+				}
+			}
+		}
+		else
+		{
+			throw new FileNotFoundException("Cannot find the themes folder.");
+		}
+
+		return themes;
 	}
 
 	@Override
