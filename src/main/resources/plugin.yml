@@ -1,4 +1,4 @@
-name: HyperChat
+name: hyperchat
 main: com.hyperfresh.mchyperchat.bukkit.BukkitPlugin
 version: ${version}
 permissions:
