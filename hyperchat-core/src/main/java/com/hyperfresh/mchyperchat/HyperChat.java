@@ -1,6 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
-import com.hyperfresh.mchyperchat.command.CommandManager;
+import com.hyperfresh.mchyperchat.util.command.CommandManager;
 import com.hyperfresh.mchyperchat.field.Field;
 import com.hyperfresh.mchyperchat.field.FieldFlag;
 import com.hyperfresh.mchyperchat.field.FieldManager;

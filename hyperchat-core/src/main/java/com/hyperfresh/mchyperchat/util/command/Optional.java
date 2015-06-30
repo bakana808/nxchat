@@ -1,4 +1,4 @@
-package com.hyperfresh.mchyperchat.command;
+package com.hyperfresh.mchyperchat.util.command;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

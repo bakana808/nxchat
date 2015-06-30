@@ -1,4 +1,4 @@
-package com.hyperfresh.mchyperchat.command;
+package com.hyperfresh.mchyperchat.util.command;
 
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.HyperChatCommands;
