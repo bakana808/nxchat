@@ -1,4 +1,4 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.theme;
 
 public interface Theme
 {

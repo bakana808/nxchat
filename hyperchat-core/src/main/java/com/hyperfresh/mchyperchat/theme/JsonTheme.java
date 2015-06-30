@@ -1,4 +1,6 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.theme;
+
+import com.hyperfresh.mchyperchat.HyperChat;
 
 import java.util.EnumMap;
 import java.util.Map;

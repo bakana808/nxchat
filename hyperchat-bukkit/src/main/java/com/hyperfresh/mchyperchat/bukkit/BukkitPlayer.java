@@ -2,7 +2,7 @@ package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Player;
-import com.hyperfresh.mchyperchat.Theme;
+import com.hyperfresh.mchyperchat.theme.Theme;
 
 import java.util.UUID;
 

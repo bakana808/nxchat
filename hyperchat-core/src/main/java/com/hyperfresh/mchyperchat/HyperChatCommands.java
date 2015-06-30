@@ -2,6 +2,7 @@ package com.hyperfresh.mchyperchat;
 
 import com.hyperfresh.mchyperchat.command.Command;
 import com.hyperfresh.mchyperchat.command.Optional;
+import com.hyperfresh.mchyperchat.theme.Theme;
 
 public class HyperChatCommands
 {

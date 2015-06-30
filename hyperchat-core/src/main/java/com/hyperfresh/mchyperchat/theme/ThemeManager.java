@@ -1,4 +1,4 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.theme;
 
 import java.util.HashMap;
 import java.util.Map;

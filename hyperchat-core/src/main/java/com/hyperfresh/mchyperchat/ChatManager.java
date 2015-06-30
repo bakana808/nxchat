@@ -1,5 +1,7 @@
 package com.hyperfresh.mchyperchat;
 
+import com.hyperfresh.mchyperchat.theme.ThemeElement;
+
 import java.util.Collection;
 import java.util.regex.Matcher;
 

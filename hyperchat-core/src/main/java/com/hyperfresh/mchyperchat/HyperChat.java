@@ -4,6 +4,7 @@ import com.hyperfresh.mchyperchat.command.CommandManager;
 import com.hyperfresh.mchyperchat.field.Field;
 import com.hyperfresh.mchyperchat.field.FieldFlag;
 import com.hyperfresh.mchyperchat.field.FieldManager;
+import com.hyperfresh.mchyperchat.theme.ThemeManager;
 
 import java.util.EnumSet;
 import java.util.Map;

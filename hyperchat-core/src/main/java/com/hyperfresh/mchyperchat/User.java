@@ -1,5 +1,7 @@
 package com.hyperfresh.mchyperchat;
 
+import com.hyperfresh.mchyperchat.theme.Theme;
+
 public interface User
 {
 	/**

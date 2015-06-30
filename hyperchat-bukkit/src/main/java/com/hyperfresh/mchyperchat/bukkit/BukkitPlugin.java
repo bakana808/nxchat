@@ -1,6 +1,8 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.*;
+import com.hyperfresh.mchyperchat.theme.JsonTheme;
+import com.hyperfresh.mchyperchat.theme.Theme;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
