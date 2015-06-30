@@ -26,7 +26,7 @@ public class HyperChat
 	private final ThemeManager themeManager = new ThemeManager();
 	private final CommandManager commandManager = new CommandManager(this);
 
-	private final HyperChatEventPoster eventPoster = new HyperChatEventPoster(this);
+	private final ChatManager chatManager = new ChatManager(this);
 
 	/**
 	 * Gets the current instance of HyperChat
@@ -86,9 +86,9 @@ public class HyperChat
 		return this.commandManager;
 	}
 
-	public HyperChatEventPoster getEventPoster()
+	public ChatManager getChatManager()
 	{
-		return this.eventPoster;
+		return this.chatManager;
 	}
 
 	/**

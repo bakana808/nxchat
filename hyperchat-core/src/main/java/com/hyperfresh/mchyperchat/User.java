@@ -23,7 +23,7 @@ public interface User
 	 * class to use this method.
 	 *
 	 * @param said the last message this user has sent
-	 * @see HyperChatEventPoster
+	 * @see ChatManager
 	 */
 	public void setLastSaid(String said);
 

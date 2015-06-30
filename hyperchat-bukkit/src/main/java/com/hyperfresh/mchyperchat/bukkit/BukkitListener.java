@@ -42,7 +42,7 @@ public class BukkitListener implements Listener
 
 		Player player = plugin.getPlayer(event.getPlayer());
 
-		hyperChat.getEventPoster().chatAs(player, event.getMessage());
+		hyperChat.getChatManager().chatAs(player, event.getMessage());
 	}
 
 	@EventHandler
@@ -58,7 +58,7 @@ public class BukkitListener implements Listener
 
 				event.setCommand("");
 
-				hyperChat.getEventPoster().chatAs(plugin.getConsole(), said);
+				hyperChat.getChatManager().chatAs(plugin.getConsole(), said);
 			}
 		}
 	}

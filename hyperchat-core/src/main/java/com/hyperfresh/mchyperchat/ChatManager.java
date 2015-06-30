@@ -8,11 +8,11 @@ import java.util.regex.Matcher;
  *
  * When implementing a server API, redirect all their events to this class.
  */
-public class HyperChatEventPoster
+public class ChatManager
 {
 	private HyperChat hyperChat;
 
-	public HyperChatEventPoster(HyperChat hyperChat)
+	public ChatManager(HyperChat hyperChat)
 	{
 		this.hyperChat = hyperChat;
 	}
