@@ -1,7 +1,7 @@
 package com.hyperfresh.mchyperchat.tests;
 
 import com.hyperfresh.mchyperchat.HyperChat;
-import com.hyperfresh.mchyperchat.HyperChatPlugin;
+import com.hyperfresh.mchyperchat.Plugin;
 import com.hyperfresh.mchyperchat.Player;
 import com.hyperfresh.mchyperchat.User;
 import com.hyperfresh.mchyperchat.field.FieldManager;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class FieldTests
 {
-	public class BlankPlugin implements HyperChatPlugin
+	public class BlankPlugin implements Plugin
 	{
 		@Override
 		public Player getPlayer(UUID id)

@@ -3,7 +3,7 @@ package com.hyperfresh.mchyperchat;
 import java.util.Collection;
 import java.util.UUID;
 
-public interface HyperChatPlugin
+public interface Plugin
 {
 	/**
 	 * Gets a Player by their UUID.

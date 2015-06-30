@@ -20,7 +20,7 @@ public class HyperChat
 	 */
 	private static final HyperChat instance = new HyperChat();
 
-	private HyperChatPlugin plugin = null;
+	private Plugin plugin = null;
 
 	private final FieldManager fieldManager = new FieldManager();
 	private final ThemeManager themeManager = new ThemeManager();
@@ -41,7 +41,7 @@ public class HyperChat
 	/**
 	 * This will run when this plugin is enabled.
 	 */
-	public void setPlugin(HyperChatPlugin plugin)
+	public void setPlugin(Plugin plugin)
 	{
 		this.plugin = plugin;
 		//READ "field" FOLDER HERE
@@ -61,7 +61,7 @@ public class HyperChat
 	 *
 	 * @return the current console
 	 */
-	public HyperChatPlugin getPlugin()
+	public Plugin getPlugin()
 	{
 		return this.plugin;
 	}

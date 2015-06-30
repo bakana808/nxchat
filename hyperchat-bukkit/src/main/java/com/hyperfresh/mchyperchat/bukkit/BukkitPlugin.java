@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 /**
  * The entry class for the Bukkit plugin.
  */
-public class BukkitPlugin extends JavaPlugin implements HyperChatPlugin
+public class BukkitPlugin extends JavaPlugin implements Plugin
 {
 	/**
 	 * A cache of Users that wrap Players.
