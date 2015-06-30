@@ -1,7 +1,7 @@
 package com.hyperfresh.mchyperchat.util.command;
 
 import com.hyperfresh.mchyperchat.HyperChat;
-import com.hyperfresh.mchyperchat.HyperChatCommands;
+import com.hyperfresh.mchyperchat.command.ThemeCommands;
 import com.hyperfresh.mchyperchat.User;
 
 import java.lang.reflect.Method;
@@ -18,7 +18,7 @@ public final class CommandManager
 
 	public CommandManager(HyperChat hyperChat)
 	{
-		registerCommands(new HyperChatCommands(hyperChat));
+		registerCommands(new ThemeCommands(hyperChat));
 	}
 
 	public void registerCommands(Object object)

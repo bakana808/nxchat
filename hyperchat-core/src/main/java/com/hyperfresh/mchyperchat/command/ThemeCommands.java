@@ -1,14 +1,16 @@
-package com.hyperfresh.mchyperchat;
+package com.hyperfresh.mchyperchat.command;
 
+import com.hyperfresh.mchyperchat.HyperChat;
+import com.hyperfresh.mchyperchat.User;
 import com.hyperfresh.mchyperchat.util.command.Command;
 import com.hyperfresh.mchyperchat.util.command.Optional;
 import com.hyperfresh.mchyperchat.theme.Theme;
 
-public class HyperChatCommands
+public class ThemeCommands
 {
 	HyperChat hyperChat;
 
-	public HyperChatCommands(HyperChat hyperChat) {
+	public ThemeCommands(HyperChat hyperChat) {
 		this.hyperChat = hyperChat;
 	}
 
