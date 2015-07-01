@@ -2,9 +2,6 @@ package com.hyperfresh.mchyperchat.field;
 
 import com.hyperfresh.mchyperchat.User;
 
-import java.util.Collections;
-import java.util.Set;
-
 /**
  * @author octopod
  */
@@ -21,9 +18,9 @@ public interface Field
 	 * Returns true if this field contains a certain FieldFlag.
 	 * @return
 	 */
-	public default Set<FieldFlag> getFlags()
+	public default FieldFlag[] getFlags()
 	{
-		return Collections.emptySet();
+		return new FieldFlag[0];
 	}
 
 	/**

@@ -1,9 +1,6 @@
 package com.hyperfresh.mchyperchat.field;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FieldManager
 {
@@ -14,7 +11,7 @@ public class FieldManager
 
 	public FieldManager()
 	{
-		addFieldContainer(DefaultFields.class); //register default fields
+		addFieldContainer(GeneralFields.class); //register default fields
 	}
 
 	/**
@@ -125,9 +122,11 @@ public class FieldManager
 			{
 				String ID = e.getKey();
 				Field field = e.getValue();
+				List<FieldFlag> fieldFlags = Arrays.asList(field.getFlags());
 				if(
-					(!blacklist && !Collections.disjoint(field.getFlags(), flags)) ||
-					(blacklist && Collections.disjoint(field.getFlags(), flags))
+
+					(!blacklist && !Collections.disjoint(fieldFlags, flags)) ||
+					(blacklist && Collections.disjoint(fieldFlags, flags))
 				)
 				{
 					filteredFields.put(ID, field);
