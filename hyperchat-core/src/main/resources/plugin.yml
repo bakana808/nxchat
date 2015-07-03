@@ -1,7 +1,0 @@
-name: hyperchat
-main: com.hyperfresh.mchyperchat.bukkit.BukkitPlugin
-version: ${version}
-permissions:
-    # is the player allowed to set their theme?
-    hyperchat.theme.set:
-        default: true
