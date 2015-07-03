@@ -1,0 +1,4 @@
+name: Vanilla Two-line
+author: octopod
+header: "<${NAME}>"
+message: "    ${MESSAGE}"
