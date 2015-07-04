@@ -104,19 +104,6 @@ public class HyperChat
 	private static final String FIELD_REGEX_L = "(?i)\\$\\{", FIELD_REGEX_R = "\\}";
 
 	/**
-	 * Converts & codes into section signs in order for Minecraft to display colored text.
-	 *
-	 * @param string
-	 * @return
-	 */
-	public String colorize(String string)
-	{
-		if(string == null) return null;
-
-		return Color.colorize(string);
-	}
-
-	/**
 	 * Preprocesses formats read from themes, which is a combination of {@code colorize()}
 	 * and {@code processStaticFields()}.
 	 *
@@ -126,7 +113,7 @@ public class HyperChat
 	public String preprocessThemeFormat(String string)
 	{
 		if(string == null) return null;
-		string = colorize(string);
+		string = Color.colorize(string);
 		string = processStaticFields(string);
 		return string;
 	}
