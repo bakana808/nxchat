@@ -1,8 +1,8 @@
-HyperChat [ ![Build Status][build-badge] ][build] [ ![Downloads][dl-badge] ][dl] [ ![Join IRC][irc-badge] ][irc]
-===
-###### or nxChat 2.0 for the insiders
+![nxChat2](http://puu.sh/jk9RD/2bdce09bf5.png)
 
-HyperChat is a chat plugin for Minecraft.
+[ ![Build Status][build-badge] ][build] [ ![Downloads][dl-badge] ][dl] [ ![Join IRC][irc-badge] ][irc]
+===
+nxChat is a chat plugin for Minecraft.
 *Everything is still work-in-progress and could be changed.*
 
 If you want to contribute to this project, feel free to fork and create pull requests.
@@ -16,12 +16,12 @@ This will be replaced with the field's value in-game.
 
 Creating Fields
 ------
-HyperChat includes its own pre-defined fields and allows you to define your own.
+nxChat includes its own pre-defined fields and allows you to define your own.
 All user-defined fields are contained in the `fields` folder.
 
 There are two ways to create fields.
 
-1) **create a JSON file in the `fields` folder.**
+1) **Create a JSON file in the `fields` folder.**
 
 This JSON file is an array of "field arrays", which contain the following keys:
  - `keys` - an array of strings to use as the field keys
@@ -41,7 +41,7 @@ For example, part of `fields/color.json` contains:
 ]
 ```
 
-2) **define fields using the API**
+2) **Define fields using the API**
 
 In this case, there can define two types of fields: dynamic and static.
 For optimization purposes, if a field is "static", then field keys in themes will be replaced once when it is loaded. If it's "dynamic", then it will be replaced when any message using the theme is printed.
@@ -73,28 +73,23 @@ Creating Themes
 ------
 All user-defined themes are located in the `themes` folder.
 
-There are two ways to create themes.
+To add your own themes to nxChat, create a .yml file inside the `themes` folder.
 
-1) **create a JSON file in the `themes` folder.**
+The YAML should contain these specific keys:
+ - __`name`__ - The name of the theme
+ - __`author`__ - The author of the theme
+ - `header` - This will be printed before a player's first chat message in a chain of chat messages.
+ - __`body`__ - This will be printed every time a player chats.
+ - `footer` - This will be printed first if the next chat message is from a different player.
 
-This JSON file is a "theme array", which contains the following keys:
- - `name` - The name of the theme
- - `player-header` - (optional) This will be printed before a player's first chat message in a chain of chat messages.
- - `player-body` - This will be printed every time a player chats.
- - `player-footer` - (optional) This will be printed first if the next chat message is from a different player.
-
-For example, this is an included theme, `themes/classic.json`
-```json
-{
-	"name": "classic",
-	"player-body": "<${name}> ${message}"
-}
+For example:
+```yaml
+name: Example Theme
+author: octopod
+header: '[${name}]'
+body: '    >${message}'
+footer: '----------------'
 ```
-
-2) **define themes using the API**
-
-Further documentation will be made later.
-
 [build-badge]: https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square
 
 [build]: https://travis-ci.org/hyperfresh/mc-hyperchat
@@ -103,6 +98,6 @@ Further documentation will be made later.
 
 [dl]: https://github.com/hyperfresh/mc-hyperchat/releases/latest
 
-[irc-badge]: https://img.shields.io/badge/irc-join%20chat-brightgreen.svg
+[irc-badge]: https://img.shields.io/badge/irc-join%20chat-brightgreen.svg?style=flat-square
 
 [irc]: https://webchat.esper.net/?channels=hyperfresh
