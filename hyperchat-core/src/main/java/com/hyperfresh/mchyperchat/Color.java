@@ -50,8 +50,18 @@ public enum Color
 		return map.get(c);
 	}
 
+	/**
+	 * Converts & codes into section signs in order for Minecraft to display colored text.
+	 *
+	 * @param string
+	 * @return
+	 */
 	static public String colorize(String string)
 	{
+		if(string == null)
+		{
+			return null;
+		}
 		return string.replaceAll("(?i)&([0-9A-FK-OR])", "\u00A7$1");
 	}
 
