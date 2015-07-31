@@ -24,7 +24,7 @@ public class HyperChat
 	private Plugin plugin = null;
 
 	private final FieldManager fieldManager = new FieldManager();
-	private final ThemeManager themeManager = new ThemeManager();
+	private final ThemeManager themeManager = new ThemeManager(this);
 	private final CommandManager commandManager = new CommandManager(this);
 
 	private final ChatManager chatManager = new ChatManager(this);

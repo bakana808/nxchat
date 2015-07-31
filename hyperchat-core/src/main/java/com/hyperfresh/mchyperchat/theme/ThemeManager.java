@@ -1,5 +1,7 @@
 package com.hyperfresh.mchyperchat.theme;
 
+import com.hyperfresh.mchyperchat.HyperChat;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +14,11 @@ public class ThemeManager
 	/**
 	 * The theme to use as the default.
 	 */
-	private final Theme defaultTheme = new VanillaTheme();
+	private final Theme defaultTheme;
 
-	public ThemeManager()
+	public ThemeManager(HyperChat hyperChat)
 	{
-		add("vanilla", defaultTheme);
+		add("vanilla", defaultTheme = new VanillaTheme(hyperChat));
 	}
 
 	public void add(String ID, Theme theme)
@@ -51,31 +53,4 @@ public class ThemeManager
 		return (E)themesByClass.get(themeClass);
 	}
 
-	public static class VanillaTheme implements Theme
-	{
-		private Map<ThemeElement, String> elements = new HashMap<>();
-
-		protected VanillaTheme()
-		{
-			elements.put(ThemeElement.CHAT_MESSAGE_FORMAT, "<${name}> ${message}");
-		}
-
-		@Override
-		public String getName()
-		{
-			return "Vanilla Classic";
-		}
-
-		@Override
-		public String getAuthor()
-		{
-			return "Mojang";
-		}
-
-		@Override
-		public String getElement(ThemeElement element)
-		{
-			return elements.get(element);
-		}
-	}
 }

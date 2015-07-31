@@ -1,7 +1,7 @@
 package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.HyperChat;
-import com.hyperfresh.mchyperchat.theme.Theme;
+import com.hyperfresh.mchyperchat.theme.ChatHandler;
 import com.hyperfresh.mchyperchat.User;
 import org.bukkit.command.ConsoleCommandSender;
 
@@ -12,13 +12,13 @@ public class BukkitConsole implements User
 {
 	private final ConsoleCommandSender handle;
 
-	private Theme theme;
+	private ChatHandler chatHandler;
 	private String lastSaid = null;
 
 	public BukkitConsole(HyperChat hyperChat, ConsoleCommandSender console)
 	{
 		this.handle = console;
-		this.theme = hyperChat.getThemeManager().getDefaultTheme();
+		this.chatHandler = hyperChat.getThemeManager().getDefaultTheme();
 	}
 
 	@Override
@@ -52,14 +52,14 @@ public class BukkitConsole implements User
 	}
 
 	@Override
-	public Theme getTheme()
+	public ChatHandler getChatHandler()
 	{
-		return theme;
+		return chatHandler;
 	}
 
 	@Override
-	public void setTheme(Theme theme)
+	public void setChatHandler(ChatHandler theme)
 	{
-		this.theme = theme;
+		this.chatHandler = theme;
 	}
 }

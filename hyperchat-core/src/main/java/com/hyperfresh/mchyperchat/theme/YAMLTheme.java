@@ -1,7 +1,6 @@
 package com.hyperfresh.mchyperchat.theme;
 
 import com.hyperfresh.mchyperchat.HyperChat;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.yaml.snakeyaml.Yaml;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.jar.JarFile;
 
-public class YAMLTheme implements Theme
+public class YAMLTheme extends Theme
 {
 	private Yaml yaml;
 
@@ -24,6 +23,8 @@ public class YAMLTheme implements Theme
 
 	public YAMLTheme(HyperChat hyperChat, File file) throws FileNotFoundException
 	{
+		super(hyperChat);
+
 		if(file == null || !file.exists())
 		{
 			throw new FileNotFoundException("This file doesn't exist.");
@@ -65,19 +66,21 @@ public class YAMLTheme implements Theme
 	}
 
 	@Override
-	public String getElement(ThemeElement element)
+	public String getHeaderFormat()
 	{
-		switch(element)
-		{
-			case CHAT_HEADER_FORMAT:
-				return header;
-			case CHAT_MESSAGE_FORMAT:
-				return message;
-			case CHAT_FOOTER_FORMAT:
-				return footer;
-			default:
-				throw new NullPointerException("A case with the element " + element.name() + " does not exist.");
-		}
+		return header;
+	}
+
+	@Override
+	public String getBodyFormat()
+	{
+		return message;
+	}
+
+	@Override
+	public String getFooterFormat()
+	{
+		return footer;
 	}
 
 	public static void createDefaultThemes(File jar, File folder) throws IOException

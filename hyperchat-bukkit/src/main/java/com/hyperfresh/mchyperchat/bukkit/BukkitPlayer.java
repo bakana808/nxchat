@@ -2,7 +2,7 @@ package com.hyperfresh.mchyperchat.bukkit;
 
 import com.hyperfresh.mchyperchat.HyperChat;
 import com.hyperfresh.mchyperchat.Player;
-import com.hyperfresh.mchyperchat.theme.Theme;
+import com.hyperfresh.mchyperchat.theme.ChatHandler;
 
 import java.util.UUID;
 
@@ -13,13 +13,13 @@ public class BukkitPlayer implements Player
 {
 	private final org.bukkit.entity.Player handle;
 
-	private Theme theme;
+	private ChatHandler chatHandler;
 	private String lastSaid = null;
 
 	public BukkitPlayer(HyperChat hyperChat, org.bukkit.entity.Player player)
 	{
 		this.handle = player;
-		this.theme = hyperChat.getThemeManager().getDefaultTheme();
+		this.chatHandler = hyperChat.getThemeManager().getDefaultTheme();
 	}
 
 	public String getName()
@@ -58,14 +58,14 @@ public class BukkitPlayer implements Player
 	}
 
 	@Override
-	public Theme getTheme()
+	public ChatHandler getChatHandler()
 	{
-		return theme;
+		return chatHandler;
 	}
 
 	@Override
-	public void setTheme(Theme theme)
+	public void setChatHandler(ChatHandler theme)
 	{
-		this.theme = theme;
+		this.chatHandler = theme;
 	}
 }

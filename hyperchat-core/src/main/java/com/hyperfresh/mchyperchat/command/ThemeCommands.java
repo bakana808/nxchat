@@ -28,7 +28,7 @@ public class ThemeCommands
 		}
 		Theme theme = hyperChat.getThemeManager().get(themeID);
 		if(theme != null) {
-			user.setTheme(theme);
+			user.setChatHandler(theme);
 			user.sendMessage("Theme set to " + theme.getName() + ".");
 		} else {
 			user.sendMessage("Sorry, a theme with an ID \"" + themeID + "\" does not exist.");

@@ -1,6 +1,6 @@
 package com.hyperfresh.mchyperchat;
 
-import com.hyperfresh.mchyperchat.theme.Theme;
+import com.hyperfresh.mchyperchat.theme.ChatHandler;
 
 public interface User
 {
@@ -43,7 +43,7 @@ public interface User
 	 */
 	public boolean hasPermission(String permission);
 
-	public Theme getTheme();
+	public ChatHandler getChatHandler();
 
-	public void setTheme(Theme theme);
+	public void setChatHandler(ChatHandler theme);
 }
