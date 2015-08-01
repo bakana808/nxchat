@@ -90,6 +90,9 @@ header: '[${name}]'
 body: '    >${message}'
 footer: '----------------'
 ```
+In-game:
+![Theme Screenshot](http://puu.sh/jkQNT/b0451e55ec.png)
+
 [build-badge]: https://img.shields.io/travis/hyperfresh/mc-hyperchat.svg?style=flat-square
 
 [build]: https://travis-ci.org/hyperfresh/mc-hyperchat
