@@ -2,8 +2,7 @@ sudo: false
 
 language: java
 
-jdk:
-    - oraclejdk8
+jdk: oraclejdk8
 
 install: true
 
@@ -16,16 +15,13 @@ deploy:
         secure: Tv8gH7hGCj9KVHHYk74CcJGeF87bDo5hB4eBFiqxfLTzQPXrupZCjb/A1aZou25jd4FoHsFKlSCbwNJ9Vh/5WbuSr9xVDk7TPHmELr07F8NCY2nFgT7KP/wV0u5k8LECpRSmQ5Irc9tWe8YzL/oTRL4GXTxFOybAGX34KHZqqDI=
     file_glob: true
     file:
-        - "hyperchat-core/build/libs/hyperchat*.jar"
-        - "hyperchat-bukkit/build/libs/hyperchat*.jar"
+        - hyperchat-core/build/libs/hyperchat*.jar
+        - hyperchat-bukkit/build/libs/hyperchat*.jar
     on:
         tags: true
         repo: hyperfresh/mc-hyperchat
 
 notifications:
     email: false
-    irc:
-        channels:
-            - "irc.esper.net#hyperfresh"
-        on_success: always
-        on_failure: always
+    slack:
+        secure: gjyQi10/Avos0P8IuD7PHnZafOUrcTowZXZ6EU1WhTy4qhIb5If7Msqwfrj082EHntjo3KvE2IkHkk8zFC03w+5zQ3LQ9sVldcsyg7n4CTi4zjuMkzuFdA2dRNeXQvKmgn5xvMbBpXI5h7qnPxDwZtstuPc9ecjLgLzKjHsA3Qk=
