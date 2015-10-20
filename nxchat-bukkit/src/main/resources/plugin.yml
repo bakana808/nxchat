@@ -1,0 +1,7 @@
+name: hyperchat
+main: BukkitPlugin
+version: ${version}
+permissions:
+    # is the player allowed to set their theme?
+    hyperchat.theme.set:
+        default: true
