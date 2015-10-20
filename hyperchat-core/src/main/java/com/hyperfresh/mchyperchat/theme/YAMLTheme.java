@@ -18,7 +18,7 @@ public class YAMLTheme extends Theme
 	private String author;
 
 	private String header;
-	private String message;
+	private String body;
 	private String footer;
 
 	public YAMLTheme(HyperChat hyperChat, File file) throws FileNotFoundException
@@ -49,7 +49,7 @@ public class YAMLTheme extends Theme
 		author = 	map.computeIfAbsent("author", (k) -> "Unknown Author").toString();
 
 		header = 	map.containsKey("header") 	? hyperChat.preprocessThemeFormat(map.get("header").toString()) : null;
-		message = 	map.containsKey("message") 	? hyperChat.preprocessThemeFormat(map.get("message").toString()) : null;
+		body = 	map.containsKey("body") 		? hyperChat.preprocessThemeFormat(map.get("body").toString()) : null;
 		footer = 	map.containsKey("footer") 	? hyperChat.preprocessThemeFormat(map.get("footer").toString()) : null;
 	}
 
@@ -74,7 +74,7 @@ public class YAMLTheme extends Theme
 	@Override
 	public String getBodyFormat()
 	{
-		return message;
+		return body;
 	}
 
 	@Override
