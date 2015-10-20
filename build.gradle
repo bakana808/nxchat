@@ -54,7 +54,7 @@ subprojects {
 	sourceCompatibility = 1.7
 	targetCompatibility = 1.7
 
-	group = 'org.hyperfresh.mc-hyperchat'
+	group = 'org.hyperfresh.nxchat'
 	version = git_tag
 
 	ext.git_version = git_tag + "-" + git_hash

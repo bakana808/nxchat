@@ -1,7 +1,7 @@
 apply plugin: 'idea'
 
 dependencies {
-	compile project(':hyperchat-core')
+	compile project(':nxchat-core')
 	// Bukkit API
 	compile 'org.bukkit:bukkit:1.8-R0.1-SNAPSHOT'
 }
@@ -19,7 +19,7 @@ processResources {
 
 shadowJar {
 	dependencies {
-		include(dependency(':hyperchat-core'))
+		include(dependency(':nxchat-core'))
 	}
 }
 
